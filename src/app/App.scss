@@ -1,0 +1,15 @@
+.app {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    padding: 1rem;
+  }
+
+  &__content {
+    height: 100%;
+    flex: 1 1 0;
+  }
+}

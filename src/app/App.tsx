@@ -2,57 +2,60 @@ import React from 'react';
 
 import {
     BrowserRouter as Router,
-    Redirect,
     Route,
     Switch,
 } from 'react-router-dom';
 
 import Media from 'react-media';
 
+import { Box } from '@material-ui/core';
+
 import {
     Chat,
     TradeList,
     Trade,
     TradeDashboard,
+    UserPanel,
 } from './components';
 
-import * as PATHS from './paths';
+import {
+    PATH_CHAT,
+    PATH_DASHBOARD,
+    PATH_ROOT,
+} from './constants';
+
+import './App.scss';
 
 const MEDIA_QUERY_SMALL_SCREEN = 'screen and (max-width: 399px)';
 
 function App() {
     return (
-        <Router>
-
-            <Media query={MEDIA_QUERY_SMALL_SCREEN}>
-
-                {isSmallScreen => isSmallScreen ? (
-                    <Switch>
-
-                        <Route exact path={PATHS.ROOT} component={TradeList} />
-                        <Route path={PATHS.CHAT} component={Chat} />
-                        <Route exact path={PATHS.DASHBOARD} component={TradeDashboard} />
-
-                        <Redirect from={PATHS.TRADE} to={PATHS.ROOT} />
-
-                    </Switch>
-                ) : (
-                    <Switch>
-
-                        <Route exact path={[PATHS.ROOT, PATHS.TRADE]} component={Trade} />
-                        {/*<Route exact path={PATHS.TRADE} component={Trade} />*/}
-
-                        {/*<Redirect from={PATHS.ROOT} to={PATHS.TRADE} />*/}
-                        <Redirect from={PATHS.CHAT} to={PATHS.TRADE} />
-                        <Redirect from={PATHS.DASHBOARD} to={PATHS.TRADE} />
-
-
-                    </Switch>
-                )}
-
-            </Media>
-
-        </Router>
+        <div className="app">
+            <div className="app__header">
+                <UserPanel />
+            </div>
+            <div className="app__content">
+                <Router>
+                    <Media query={MEDIA_QUERY_SMALL_SCREEN}>
+                        {isSmallScreen => isSmallScreen ? (
+                            <Switch>
+                                <Route exact path={PATH_ROOT} component={TradeList} />
+                                <Route exact path={`${PATH_CHAT}/:tradeId`} component={Chat} />
+                                <Route exact path={`${PATH_DASHBOARD}/:tradeId`} component={TradeDashboard} />
+                            </Switch>
+                        ) : (
+                            <Switch>
+                                <Route
+                                    exact
+                                    path={[PATH_ROOT, `${PATH_CHAT}/:tradeId`, `${PATH_DASHBOARD}/:tradeId`]}
+                                    component={Trade}
+                                />
+                            </Switch>
+                        )}
+                    </Media>
+                </Router>
+            </div>
+        </div>
     );
 }
 
