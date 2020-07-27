@@ -1,39 +1,37 @@
 import React from 'react';
 
-import { useParams } from 'react-router-dom';
+import { Box, Grid } from '@material-ui/core';
 
-import { Grid } from '@material-ui/core';
-
-import TradeList from './TradeList';
-import Chat from './Chat';
-import TradeDashboard from './TradeDashboard';
+import TradeList from './trade-list';
+import Chat from './chat';
+import TradeDashboard from './dashboard';
 
 interface TradeProps {
 }
 
 function Trade() {
-    const { tradeId } = useParams();
-
     return (
-        <>
-            <h1>{`Trade #${tradeId}`}</h1>
+        <Grid container>
 
-            <Grid container>
-
-                <Grid item xs={3}>
+            <Grid item xs={3}>
+                <Box p={1} borderRight={1}>
                     <TradeList />
-                </Grid>
-
-                <Grid item xs={6}>
-                    <Chat />
-                </Grid>
-
-                <Grid item xs={3}>
-                    <TradeDashboard />
-                </Grid>
-
+                </Box>
             </Grid>
-        </>
+
+            <Grid item xs={6}>
+                <Box p={1} borderRight={1}>
+                    <Chat />
+                </Box>
+            </Grid>
+
+            <Grid item xs={3}>
+                <Box p={1}>
+                    <TradeDashboard />
+                </Box>
+            </Grid>
+
+        </Grid>
     );
 }
 
