@@ -6,27 +6,26 @@ import { Link } from 'react-router-dom';
 import { useTradeList } from './useTradeList';
 import { PATH_CHAT } from '../../constants';
 
-interface TradeListProps {
-}
+import './TradeList.scss';
 
 function TradeList() {
 
     const { items } = useTradeList();
 
     return (
-        <Box height="100%" overflow="auto">
+        <div className="trade-list">
             {items.map(item => (
-                <Link to={`${PATH_CHAT}/${item.id}`} key={item.id}>
-                    <Box m={1}>
+                <div className="trade-list__item">
+                    <Link to={`${PATH_CHAT}/${item.id}`} key={item.id}>
                         <div>{`${item.buyer.name} is buying`}</div>
                         <Avatar src={item.buyer.avatarUrl} alt={item.buyer.name} />
                         <div><b>{item.paymentMethod}</b></div>
                         <div>{item.amount} USD</div>
-                    </Box>
-                </Link>
+                    </Link>
+                </div>
             ))}
-        </Box>
+        </div>
     );
 }
 
-export default React.memo<TradeListProps>(TradeList);
+export default TradeList;

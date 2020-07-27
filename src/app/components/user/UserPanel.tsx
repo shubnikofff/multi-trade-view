@@ -5,9 +5,6 @@ import { Grid, Button } from '@material-ui/core';
 import { useUserPanel } from './useUserPanel';
 import { UserRole } from '../../types/user';
 
-interface UserPanelProps {
-}
-
 function UserPanel() {
     const { auth, switchUser } = useUserPanel()
 

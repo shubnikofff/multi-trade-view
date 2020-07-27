@@ -4,15 +4,16 @@ import { useChat } from './useChat';
 
 import { Box } from '@material-ui/core';
 
-interface ChatProps {
-}
-
 function Chat() {
-    const { auth, messages } = useChat();
+    const { auth, chat } = useChat();
+
+    if(!chat) {
+        return null;
+    }
 
     return (
         <div>
-            {messages.map((message, index) => (
+            {chat.messages.map((message, index) => (
                 <Box m={1} key={index}>
                     <div>{message.text}</div>
                     <div>{message.sendTime.toLocaleString()}</div>
@@ -23,4 +24,4 @@ function Chat() {
     );
 }
 
-export default React.memo<ChatProps>(Chat);
+export default Chat;

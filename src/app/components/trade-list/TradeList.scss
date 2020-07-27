@@ -1,3 +1,10 @@
 .trade-list {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 
+  &__item {
+    padding: 1rem;
+    border-bottom: 1px solid lightgray;
+  }
 }

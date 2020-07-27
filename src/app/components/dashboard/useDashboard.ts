@@ -9,7 +9,7 @@ import { Chat } from '../../types/chat';
 import { Trade, TradeEntity } from '../../types/trade';
 import { User } from '../../types/user';
 
-function useTradeDashboard() {
+function useDashboard() {
     const state = useStore().getState();
     const { tradeId } = useParams();
 
@@ -26,4 +26,4 @@ function useTradeDashboard() {
     return { trade }
 }
 
-export { useTradeDashboard }
+export { useDashboard }

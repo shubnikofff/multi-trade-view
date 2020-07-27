@@ -1,3 +1,3 @@
-import TradeDashboard from './TradeDashboard';
+import Dashboard from './Dashboard';
 
-export default TradeDashboard;
+export default Dashboard;

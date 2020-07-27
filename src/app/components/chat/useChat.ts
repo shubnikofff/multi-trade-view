@@ -5,7 +5,6 @@ import { actions as authActions } from '../../slices/authSlice';
 import { selectors as chatSelectors } from '../../slices/chatsSlice';
 
 import { RootState } from '../../store';
-import { Chat } from '../../types/chat';
 
 function useChat() {
     const dispatch = useDispatch();
@@ -14,15 +13,13 @@ function useChat() {
     const { tradeId } = useParams();
 
     const auth = useSelector<RootState>(state => state.auth);
-    const chat = chatSelectors.selectById(state, tradeId) as Chat;
-
-    const { messages } = chat;
+    const chat = chatSelectors.selectById(state, tradeId);
 
     const switchUser = () => dispatch(authActions.switchUser());
 
     return {
         auth,
-        messages,
+        chat,
         switchUser,
     }
 }

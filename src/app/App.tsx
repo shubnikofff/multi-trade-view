@@ -8,13 +8,11 @@ import {
 
 import Media from 'react-media';
 
-import { Box } from '@material-ui/core';
-
 import {
     Chat,
+    CombinedView,
+    Dashboard,
     TradeList,
-    Trade,
-    TradeDashboard,
     UserPanel,
 } from './components';
 
@@ -41,14 +39,14 @@ function App() {
                             <Switch>
                                 <Route exact path={PATH_ROOT} component={TradeList} />
                                 <Route exact path={`${PATH_CHAT}/:tradeId`} component={Chat} />
-                                <Route exact path={`${PATH_DASHBOARD}/:tradeId`} component={TradeDashboard} />
+                                <Route exact path={`${PATH_DASHBOARD}/:tradeId`} component={Dashboard} />
                             </Switch>
                         ) : (
                             <Switch>
                                 <Route
                                     exact
                                     path={[PATH_ROOT, `${PATH_CHAT}/:tradeId`, `${PATH_DASHBOARD}/:tradeId`]}
-                                    component={Trade}
+                                    component={CombinedView}
                                 />
                             </Switch>
                         )}
