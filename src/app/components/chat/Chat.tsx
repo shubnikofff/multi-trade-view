@@ -5,21 +5,29 @@ import { useChat } from './useChat';
 import './Chat.scss';
 
 function Chat() {
-    const { auth, chat } = useChat();
+    const { chat, trade } = useChat();
 
-    if (!chat) {
-        return null;
+    if (!trade) {
+        return (
+            <div>No such trade</div>
+        );
     }
 
     return (
         <div className="chat">
-            {chat.messages.map((message, index) => (
-                <div className="chat__message" key={index}>
-                    <div>{message.text}</div>
-                    <div>{message.sendTime.toLocaleString()}</div>
-                    <div>{message.sender}</div>
-                </div>
-            ))}
+            <div className="chat__header">
+                <div><b>{trade.paymentMethod}</b></div>
+                <div>{trade.buyer.name}</div>
+            </div>
+            <div className="chat__body">
+                {chat && chat.messages.map((message, index) => (
+                    <div className="chat__message" key={index}>
+                        <div>{message.text}</div>
+                        <div>{message.sendTime.toLocaleString()}</div>
+                        <div>{message.sender}</div>
+                    </div>
+                ))}
+            </div>
             <div className="chat__footer">
                 <input />
             </div>

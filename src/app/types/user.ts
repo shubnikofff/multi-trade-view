@@ -2,9 +2,8 @@ export interface User {
     id: number;
     name: string;
     avatarUrl: string;
-    positiveRate: number;
-    negativeRate: number;
-    ofTrades: number;
+    positiveReputation: number;
+    negativeReputation: number;
 }
 
 export enum UserRole {

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useParams } from 'react-router-dom';
+
 import Chat from '../chat';
 import Dashboard from '../dashboard';
 import TradeList from '../trade-list';
@@ -7,11 +9,13 @@ import TradeList from '../trade-list';
 import './CombinedView.scss';
 
 function CombinedView() {
-    return(
+    const { tradeId } = useParams();
+
+    return (
         <div className="combined-view">
             <TradeList />
-            <Chat />
-            <Dashboard />
+            {tradeId && <Chat />}
+            {tradeId && <Dashboard />}
         </div>
     );
 }

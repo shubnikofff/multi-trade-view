@@ -12,8 +12,8 @@ const users: User[] = Array.from({ length: USERS_NUMBER }, (_, index: number) =>
     id: index + 1,
     avatarUrl: faker.image.avatar(),
     name: faker.name.firstName(),
-    positiveRate: faker.random.number({ min: 1, max: 100 }),
-    negativeRate: faker.random.number({ min: -100, max: -1 }),
+    positiveReputation: faker.random.number({ min: 1, max: 100 }),
+    negativeReputation: faker.random.number({ min: -100, max: -1 }),
     ofTrades: faker.random.number(100),
 }));
 

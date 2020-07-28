@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Avatar, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 import { useTradeList } from './useTradeList';
@@ -15,10 +14,10 @@ function TradeList() {
     return (
         <div className="trade-list">
             {items.map(item => (
-                <div className="trade-list__item">
+                <div className="trade-list__item" key={item.id}>
                     <Link to={`${PATH_CHAT}/${item.id}`} key={item.id}>
                         <div>{`${item.buyer.name} is buying`}</div>
-                        <Avatar src={item.buyer.avatarUrl} alt={item.buyer.name} />
+                        <img src={item.buyer.avatarUrl} alt={item.buyer.name} style={{borderRadius: "50%", width: "50px"}}/>
                         <div><b>{item.paymentMethod}</b></div>
                         <div>{item.amount} USD</div>
                     </Link>

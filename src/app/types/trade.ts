@@ -1,5 +1,4 @@
 import { User } from './user';
-import { Chat } from './chat';
 
 export interface TradeEntity {
     id: number;
@@ -15,7 +14,6 @@ export interface TradeEntity {
 export interface Trade {
     id: number;
     buyer: User;
-    chat: Chat;
     paymentMethod: string;
     amount: number;
     paid: boolean;

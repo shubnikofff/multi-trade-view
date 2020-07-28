@@ -1,26 +1,36 @@
-import { useSelector, useDispatch, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { actions as authActions } from '../../slices/authSlice';
 import { selectors as chatSelectors } from '../../slices/chatsSlice';
+import { selectors as tradeSelectors } from '../../slices/tradesSlice';
+import { selectors as userSelectors } from '../../slices/usersSlice';
 
-import { RootState } from '../../store';
+import { User } from '../../types/user';
+import { Trade } from '../../types/trade';
 
 function useChat() {
-    const dispatch = useDispatch();
-    const state = useStore().getState();
-
     const { tradeId } = useParams();
 
-    const auth = useSelector<RootState>(state => state.auth);
-    const chat = chatSelectors.selectById(state, tradeId);
+    const state = useStore().getState();
 
-    const switchUser = () => dispatch(authActions.switchUser());
+    const tradeEntity = tradeSelectors.selectById(state, tradeId);
+
+    if (!tradeEntity) {
+        return {};
+    }
+
+    const chat = chatSelectors.selectById(state, tradeEntity.chatId);
+    const user = userSelectors.selectById(state, tradeEntity.buyerId) as User;
+
+    const trade: Trade = {
+        ...tradeEntity,
+        buyer: user,
+    }
+
 
     return {
-        auth,
         chat,
-        switchUser,
+        trade,
     }
 }
 
