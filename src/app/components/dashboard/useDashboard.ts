@@ -1,39 +1,38 @@
 import { useParams } from 'react-router-dom';
-import { useDispatch, useStore } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { actions as tradeActions, selectors as tradeSelectors } from '../../slices/tradesSlice';
 import { selectors as userSelectors } from '../../slices/usersSlice';
 
+import { RootState } from '../../store';
 import { Trade } from '../../types/trade';
 import { User } from '../../types/user';
 
 function useDashboard() {
-    const dispatch = useDispatch();
-    const state = useStore().getState();
     const { tradeId } = useParams();
 
-    const tradeEntity = tradeSelectors.selectById(state, tradeId);
+    const dispatch = useDispatch();
 
-    if (!tradeEntity) {
-        return {}
-    }
+    const trade = useSelector<RootState, Trade | null>(state => {
+        const entity = tradeSelectors.selectById(state, tradeId);
 
-    const user = userSelectors.selectById(state, tradeEntity.buyerId) as User;
+        if (!entity) {
+            return null;
+        }
 
-    const trade: Trade = {
-        ...tradeEntity,
-        buyer: user,
-    }
+        const buyer = userSelectors.selectById(state, entity.buyerId) as User;
+
+        return { ...entity, buyer }
+    });
 
     const releaseBitcoins = () => {
         dispatch(tradeActions.updateTrade({
-            id: tradeEntity.id,
+            id: tradeId,
             changes: { paid: true },
         }));
     }
 
     return {
-        tradeEntity,
         trade,
         releaseBitcoins,
     }
