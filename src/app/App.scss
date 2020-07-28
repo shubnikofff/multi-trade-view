@@ -1,6 +1,5 @@
 .app {
   height: 100vh;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 
@@ -9,7 +8,7 @@
   }
 
   &__content {
-    height: 100%;
-    flex: 1 1 0;
+    overflow-y: hidden;
+    flex: 1;
   }
 }

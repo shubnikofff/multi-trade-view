@@ -2,24 +2,27 @@ import React from 'react';
 
 import { useChat } from './useChat';
 
-import { Box } from '@material-ui/core';
+import './Chat.scss';
 
 function Chat() {
     const { auth, chat } = useChat();
 
-    if(!chat) {
+    if (!chat) {
         return null;
     }
 
     return (
-        <div>
+        <div className="chat">
             {chat.messages.map((message, index) => (
-                <Box m={1} key={index}>
+                <div className="chat__message" key={index}>
                     <div>{message.text}</div>
                     <div>{message.sendTime.toLocaleString()}</div>
                     <div>{message.sender}</div>
-                </Box>
+                </div>
             ))}
+            <div className="chat__footer">
+                <input />
+            </div>
         </div>
     );
 }
