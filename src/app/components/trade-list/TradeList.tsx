@@ -20,6 +20,7 @@ function TradeList() {
                         <img src={item.buyer.avatarUrl} alt={item.buyer.name} style={{borderRadius: "50%", width: "50px"}}/>
                         <div><b>{item.paymentMethod}</b></div>
                         <div>{item.amount} USD</div>
+                        <div>{`Status: ${item.paid ? 'Paid' : 'Not Paid'}`}</div>
                     </Link>
                 </div>
             ))}

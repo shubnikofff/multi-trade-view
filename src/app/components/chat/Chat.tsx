@@ -5,7 +5,7 @@ import { useChat } from './useChat';
 import './Chat.scss';
 
 function Chat() {
-    const { chat, trade } = useChat();
+    const { chat, trade, removeTrade } = useChat();
 
     if (!trade) {
         return (
@@ -18,6 +18,8 @@ function Chat() {
             <div className="chat__header">
                 <div><b>{trade.paymentMethod}</b></div>
                 <div>{trade.buyer.name}</div>
+                <button onClick={removeTrade}>Delete
+                </button>
             </div>
             <div className="chat__body">
                 {chat && chat.messages.map((message, index) => (

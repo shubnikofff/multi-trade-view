@@ -15,7 +15,8 @@ const slice = createSlice({
     name: 'trades',
     initialState,
     reducers: {
-        removeTrade: tradeAdapter.removeOne,
+        updateTrade: tradeAdapter.updateOne,
+        removeTrade: tradeAdapter.removeOne
     }
 });
 
