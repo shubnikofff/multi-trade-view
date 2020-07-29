@@ -23,14 +23,14 @@ const trades: TradeEntity[] = Array.from({ length: TRADES_NUMBER }, (_, index: n
     paymentMethod: faker.random.arrayElement(['Amazon Gift Card', 'iTunes Gift Card', 'PayPal']),
     paid: faker.random.boolean(),
     buyerId: faker.random.arrayElement(users.map(user => user.id)),
-    amount: faker.random.number(300),
+    amount: faker.random.number({ min: 10, max: 300 }),
     hash: faker.random.alphaNumeric(8),
     started: faker.date.recent(7),
 }));
 
 const chats: Chat[] = Array.from({ length: TRADES_NUMBER }, (_, index: number) => ({
     id: index + 1,
-    hasUnreadMessages: false,
+    hasUnreadMessages: faker.random.boolean(),
     messages: Array.from({ length: faker.random.number(MESSAGES_MAX_NUMBER) }, () => ({
         sender: faker.random.arrayElement([UserRole.Seller, UserRole.Buyer]),
         sendTime: faker.date.between(trades[index].started, new Date()),

@@ -1,13 +1,21 @@
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import { selectors as chatSelectors } from '../../slices/chatsSlice';
 import { selectors as tradeSelectors } from '../../slices/tradesSlice';
 import { selectors as userSelectors } from '../../slices/usersSlice';
 
+import { Chat } from '../../types/chat';
+import { Dictionary } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { Trade } from '../../types/trade';
 import { User } from '../../types/user';
 
 function useTradeList() {
+    const { tradeId } = useParams();
+
+    const selectedTradeId = parseInt(tradeId);
+
     const trades = useSelector<RootState, Trade[]>(state => {
         const tradeEntities = tradeSelectors.selectAll(state);
         const userDictionary = userSelectors.selectEntities(state);
@@ -18,7 +26,13 @@ function useTradeList() {
         }))
     });
 
-    return { trades }
+    const chatDictionary = useSelector<RootState, Dictionary<Chat>>(state => chatSelectors.selectEntities(state));
+
+    return {
+        chatDictionary,
+        selectedTradeId,
+        trades,
+    };
 }
 
 export { useTradeList }

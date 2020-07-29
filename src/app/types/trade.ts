@@ -14,6 +14,7 @@ export interface TradeEntity {
 export interface Trade {
     id: number;
     buyer: User;
+    chatId: number;
     paymentMethod: string;
     amount: number;
     paid: boolean;

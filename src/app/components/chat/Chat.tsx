@@ -5,13 +5,15 @@ import { useChat } from './useChat';
 import './Chat.scss';
 
 function Chat() {
-    const { chat, trade, removeTrade } = useChat();
+    const { chat, trade, removeTrade, setChatAsRead } = useChat();
 
     if (!trade) {
         return (
             <div>No such trade</div>
         );
     }
+
+    setChatAsRead();
 
     return (
         <div className="chat">

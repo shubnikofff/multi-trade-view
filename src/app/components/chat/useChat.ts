@@ -45,10 +45,20 @@ function useChat() {
         }
     }
 
+    const setChatAsRead = () => {
+        if (chat?.hasUnreadMessages) {
+            dispatch(chatActions.updateChat({
+                id: chat.id,
+                changes: { hasUnreadMessages: false }
+            }));
+        }
+    }
+
     return {
         chat,
         trade,
         removeTrade,
+        setChatAsRead,
     }
 }
 

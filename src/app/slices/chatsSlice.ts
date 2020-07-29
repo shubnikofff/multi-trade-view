@@ -13,6 +13,7 @@ const slice = createSlice({
     name: 'chats',
     initialState,
     reducers: {
+        updateChat: chatAdapter.updateOne,
         removeChat: chatAdapter.removeOne,
     }
 });
