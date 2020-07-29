@@ -37,16 +37,24 @@ function App() {
                     <Media query={MEDIA_QUERY_SMALL_SCREEN}>
                         {isSmallScreen => isSmallScreen ? (
                             <Switch>
-                                <Route exact path={PATH_ROOT} component={TradeList} />
-                                <Route exact path={`${PATH_CHAT}/:tradeId`} component={Chat} />
-                                <Route exact path={`${PATH_DASHBOARD}/:tradeId`} component={Dashboard} />
+                                <Route exact path={PATH_ROOT}>
+                                    <TradeList />
+                                </Route>
+                                <Route exact path={`${PATH_CHAT}/:tradeId`}>
+                                    <Chat smallScreen />
+                                </Route>
+                                <Route exact path={`${PATH_DASHBOARD}/:tradeId`}>
+                                    <Dashboard smallScreen />
+                                </Route>
                             </Switch>
                         ) : (
                             <Switch>
                                 <Route
                                     exact
                                     path={[PATH_ROOT, `${PATH_CHAT}/:tradeId`, `${PATH_DASHBOARD}/:tradeId`]}
-                                    component={CombinedView}
+                                >
+                                    <CombinedView />
+                                </Route>
                                 />
                             </Switch>
                         )}

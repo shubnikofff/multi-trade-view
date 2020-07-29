@@ -2,10 +2,14 @@ import React from 'react';
 
 import { useDashboard } from './useDashboard';
 
-function Dashboard() {
+interface DashboardProps {
+    smallScreen?: boolean;
+}
+
+function Dashboard({ smallScreen }: DashboardProps) {
     const { trade, releaseBitcoins } = useDashboard();
 
-    if(!trade) {
+    if (!trade) {
         return null;
     }
 
@@ -26,4 +30,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default React.memo<DashboardProps>(Dashboard);

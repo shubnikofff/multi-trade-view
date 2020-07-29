@@ -4,7 +4,11 @@ import { useChat } from './useChat';
 
 import './Chat.scss';
 
-function Chat() {
+interface ChatProps {
+    smallScreen?: boolean,
+}
+
+function Chat({ smallScreen }: ChatProps) {
     const { chat, trade, removeTrade, setChatAsRead } = useChat();
 
     if (!trade) {
@@ -39,4 +43,4 @@ function Chat() {
     );
 }
 
-export default Chat;
+export default React.memo<ChatProps>(Chat);
