@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useApp } from './useApp';
+
 import {
     BrowserRouter as Router,
     Route,
@@ -27,6 +29,8 @@ import './App.scss';
 const MEDIA_QUERY_SMALL_SCREEN = 'screen and (max-width: 399px)';
 
 function App() {
+    useApp();
+
     return (
         <div className="app">
             <div className="app__header">

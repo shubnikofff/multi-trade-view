@@ -4,13 +4,18 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { useTradeList } from './useTradeList';
+
 import { PATH_CHAT } from '../../constants';
 
 import './TradeList.scss';
 
 function TradeList() {
-
-    const { chatDictionary, trades, selectedTradeId } = useTradeList();
+    const {
+        chatDictionary,
+        convert,
+        selectedTradeId,
+        trades,
+    } = useTradeList();
 
     return (
         <div className="trade-list">
@@ -20,12 +25,13 @@ function TradeList() {
                     key={trade.id}
                 >
                     <Link to={`${PATH_CHAT}/${trade.id}`} key={trade.id}>
-                        <span className={classNames('dot', chatDictionary[trade.chatId]?.hasUnreadMessages ? 'dot__green' : 'dot__gray')} />
+                        <span
+                            className={classNames('dot', chatDictionary[trade.chatId]?.hasUnreadMessages ? 'dot__green' : 'dot__gray')} />
                         <div>{`${trade.buyer.name} is buying`}</div>
                         <img src={trade.buyer.avatarUrl} alt={trade.buyer.name}
                              style={{ borderRadius: "50%", width: "50px" }} />
                         <div><b>{trade.paymentMethod}</b></div>
-                        <div>{trade.amount} USD</div>
+                        <div>{trade.amount} USD ({convert(trade.amount).toFixed(8)} BTC)</div>
                         <div>{`Status: ${trade.paid ? 'Paid' : 'Not Paid'}`}</div>
                     </Link>
                 </div>

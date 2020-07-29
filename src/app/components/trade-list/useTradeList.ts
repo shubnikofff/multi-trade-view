@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useRate } from '../../hooks';
 
 import { selectors as chatSelectors } from '../../slices/chatsSlice';
 import { selectors as tradeSelectors } from '../../slices/tradesSlice';
@@ -13,6 +14,7 @@ import { User } from '../../types/user';
 
 function useTradeList() {
     const { tradeId } = useParams();
+    const { convert } = useRate();
 
     const selectedTradeId = parseInt(tradeId);
 
@@ -30,6 +32,7 @@ function useTradeList() {
 
     return {
         chatDictionary,
+        convert,
         selectedTradeId,
         trades,
     };

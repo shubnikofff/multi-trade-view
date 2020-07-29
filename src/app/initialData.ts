@@ -31,7 +31,7 @@ const trades: TradeEntity[] = Array.from({ length: TRADES_NUMBER }, (_, index: n
 const chats: Chat[] = Array.from({ length: TRADES_NUMBER }, (_, index: number) => ({
     id: index + 1,
     hasUnreadMessages: faker.random.boolean(),
-    messages: Array.from({ length: faker.random.number(MESSAGES_MAX_NUMBER) }, () => ({
+    messages: Array.from({ length: faker.random.number({ min: 1, max: MESSAGES_MAX_NUMBER }) }, () => ({
         sender: faker.random.arrayElement([UserRole.Seller, UserRole.Buyer]),
         sendTime: faker.date.between(trades[index].started, new Date()),
         text: faker.lorem.text(),
