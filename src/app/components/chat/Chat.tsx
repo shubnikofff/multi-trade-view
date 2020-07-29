@@ -9,15 +9,13 @@ interface ChatProps {
 }
 
 function Chat({ smallScreen }: ChatProps) {
-    const { chat, trade, removeTrade, setChatAsRead } = useChat();
+    const { chat, trade, removeTrade } = useChat();
 
     if (!trade) {
         return (
             <div>No such trade</div>
         );
     }
-
-    setChatAsRead();
 
     return (
         <div className="chat">

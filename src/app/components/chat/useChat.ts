@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 import { selectors as chatSelectors, actions as chatActions } from '../../slices/chatsSlice';
@@ -37,6 +38,15 @@ function useChat() {
         }
     );
 
+    useEffect(() => {
+        if (chat?.hasUnreadMessages) {
+            dispatch(chatActions.updateChat({
+                id: chat.id,
+                changes: { hasUnreadMessages: false }
+            }));
+        }
+    }, [chat, dispatch]);
+
     const removeTrade = () => {
         if (tradeEntity) {
             dispatch(tradeActions.removeTrade(tradeEntity.id));
@@ -45,20 +55,10 @@ function useChat() {
         }
     }
 
-    const setChatAsRead = () => {
-        if (chat?.hasUnreadMessages) {
-            dispatch(chatActions.updateChat({
-                id: chat.id,
-                changes: { hasUnreadMessages: false }
-            }));
-        }
-    }
-
     return {
         chat,
         trade,
         removeTrade,
-        setChatAsRead,
     }
 }
 
