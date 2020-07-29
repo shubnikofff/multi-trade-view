@@ -5,9 +5,7 @@ import { TradeEntity } from '../types/trade';
 
 import { trades } from '../initialData';
 
-const tradeAdapter = createEntityAdapter<TradeEntity>({
-    sortComparer: (a, b) => b.started.valueOf() - a.started.valueOf(),
-});
+const tradeAdapter = createEntityAdapter<TradeEntity>();
 
 const initialState = tradeAdapter.setAll(tradeAdapter.getInitialState(), trades);
 

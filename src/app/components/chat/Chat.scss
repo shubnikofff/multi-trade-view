@@ -7,6 +7,9 @@
   &__header {
     padding: 1rem;
     border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 
   &__body {

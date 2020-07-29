@@ -1,6 +1,10 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import { useChat } from './useChat';
+
+import { PATH_DASHBOARD, PATH_ROOT } from '../../constants';
 
 import './Chat.scss';
 
@@ -20,10 +24,21 @@ function Chat({ smallScreen }: ChatProps) {
     return (
         <div className="chat">
             <div className="chat__header">
-                <div><b>{trade.paymentMethod}</b></div>
-                <div>{trade.buyer.name}</div>
-                <button onClick={removeTrade}>Delete
-                </button>
+                <div>
+                    {smallScreen && <Link to={`${PATH_ROOT}`}>Back</Link>}
+                    <div>
+                        <button onClick={removeTrade}>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <b>{trade.paymentMethod}</b>
+                    <div>{trade.buyer.name} +{trade.buyer.positiveReputation}/{trade.buyer.negativeReputation}</div>
+                </div>
+                <div>
+                    {smallScreen && <Link to={`${PATH_DASHBOARD}/${trade.id}`}>Dashboard</Link>}
+                </div>
             </div>
             <div className="chat__body">
                 {chat && chat.messages.map((message, index) => (
