@@ -20,7 +20,7 @@ function TradeList() {
         trades,
     } = useTradeList();
 
-    if(auth === UserRole.Buyer) {
+    if (auth === UserRole.Buyer) {
         return (
             <div>Not available for this user</div>
         )
@@ -30,12 +30,14 @@ function TradeList() {
         <div className="trade-list">
             {trades.map(trade => (
                 <div
-                    className={classNames('trade-list__item', { 'trade-list__item-active': trade.id === selectedTradeId })}
+                    className={classNames('trade-list__item', { 'trade-list__item_active': trade.id === selectedTradeId })}
                     key={trade.id}
                 >
                     <Link to={`${PATH_CHAT}/${trade.id}`} key={trade.id}>
-                        <span
-                            className={classNames('dot', chatDictionary[trade.chatId]?.hasUnreadMessages ? 'dot__green' : 'dot__gray')} />
+                        <span className={classNames('dot', chatDictionary[trade.chatId]?.hasUnreadMessages
+                            ? 'dot_green'
+                            : 'dot_gray')}
+                        />
                         <div>{`${trade.buyer.name} is buying`}</div>
                         <Avatar url={trade.buyer.avatarUrl} />
                         <div><b>{trade.paymentMethod}</b></div>

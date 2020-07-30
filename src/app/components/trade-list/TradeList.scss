@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .trade-list {
   height: 100%;
   overflow-y: auto;
@@ -6,11 +8,13 @@
 
   &__item {
     padding: 1rem;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid $color-border;
   }
 
-  &__item-active {
-    border: 1px solid gray;
+  &__item_active {
+    border: 1px solid $color-border;
+    border-radius: $border-radius;
+    background-color: $color-bg-gray;
   }
 }
 
@@ -20,11 +24,11 @@
   height: 10px;
   width: 10px;
 
-  &__gray {
-    background-color: gray;
+  &_gray {
+    background-color: $color-secondary;
   }
 
-  &__green {
-    background-color: lawngreen;
+  &_green {
+    background-color: $color-primary;
   }
 }

@@ -1,13 +1,17 @@
+@import "../../variables";
+
+$incoming-message-color: #5c7394;
+
 .chat {
   height: 100%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  background-color: #f5f7fa;
+  background-color: $color-bg-gray;
 
   &__header {
-    padding: 1rem;
-    border-bottom: 1px solid lightgray;
+    padding: $gutter;
+    border-bottom: 1px solid $color-border;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -22,7 +26,7 @@
       }
 
       &__buyer {
-        color: gray;
+        color: $color-secondary;
       }
     }
   }
@@ -35,34 +39,34 @@
 
   &__message {
     display: flex;
-    padding: 1rem;
+    padding: $gutter;
 
     &__avatar {
-      padding: 1rem;
+      padding: $gutter;
     }
 
     &__text {
-      padding: 1rem;
-      border-radius: 5px;
-      border: 1px solid lightgray;
-      font-size: 0.9rem;
+      padding: $gutter;
+      border-radius: $border-radius;
+      border: 1px solid $color-border;
+      font-size: 0.9*$font-size;
 
       &_incoming {
-        background-color: #5c7394;
-        color: white;
-        margin-left: 4rem;
+        background-color: $incoming-message-color;
+        color: $color-bg-white;
+        margin-left: 4*$gutter;
       }
 
       &_outgoing {
-        background-color: white;
-        margin-right: 4rem;
+        background-color: $color-bg-white;
+        margin-right: 4*$gutter;
       }
     }
 
     &__date {
-      padding-top: 0.5rem;
-      color: gray;
-      font-size: 0.8rem;
+      padding-top: $gutter / 2;
+      color: $color-secondary;
+      font-size: 0.8*$font-size;
 
       &_align-right {
         text-align: right;
@@ -76,8 +80,8 @@
 
   &__footer {
     display: flex;
-    margin: 1rem;
-    background-color: white;
+    margin: $gutter;
+    background-color: $color-bg-white;
     align-items: center;
 
     &__field {
@@ -85,7 +89,7 @@
 
       input {
         border: 0;
-        padding: 1rem 2rem;
+        padding: $gutter 2*$gutter;
       }
 
       input:focus {
@@ -94,7 +98,7 @@
     }
 
     &__button {
-      padding-right: 1rem;
+      padding-right: $gutter;
     }
   }
 }

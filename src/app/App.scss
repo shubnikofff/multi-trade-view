@@ -1,10 +1,12 @@
+@import "variables";
+
 .app {
   height: 100vh;
   display: flex;
   flex-direction: column;
 
   &__header {
-    padding: 1rem;
+    padding: $gutter;
   }
 
   &__content {

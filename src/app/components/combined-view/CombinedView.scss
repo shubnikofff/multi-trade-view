@@ -1,6 +1,8 @@
+@import "../../variables";
+
 .combined-view {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid $color-border;
 }
