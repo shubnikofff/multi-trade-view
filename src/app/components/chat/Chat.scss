@@ -11,6 +11,20 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+
+    &__trade-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &__payment-method {
+        font-size: large;
+      }
+
+      &__buyer {
+        color: gray;
+      }
+    }
   }
 
   &__body {
@@ -31,6 +45,7 @@
       padding: 1rem;
       border-radius: 5px;
       border: 1px solid lightgray;
+      font-size: 0.9rem;
 
       &_incoming {
         background-color: #5c7394;
@@ -60,7 +75,26 @@
   }
 
   &__footer {
-    padding: 1rem;
-    border-top: 1px solid lightgray;
+    display: flex;
+    margin: 1rem;
+    background-color: white;
+    align-items: center;
+
+    &__field {
+      flex: 1;
+
+      input {
+        border: 0;
+        padding: 1rem 2rem;
+      }
+
+      input:focus {
+        outline-width: 0;
+      }
+    }
+
+    &__button {
+      padding-right: 1rem;
+    }
   }
 }

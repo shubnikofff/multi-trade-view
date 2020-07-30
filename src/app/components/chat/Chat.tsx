@@ -1,14 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Link } from 'react-router-dom';
-
 import { useChat } from './useChat';
+
+import { Formik, Form, Field, FormikHelpers } from 'formik';
+import { Link } from 'react-router-dom';
+import { Avatar } from '../avatar/Avatar';
 
 import { PATH_DASHBOARD, PATH_ROOT } from '../../constants';
 
 import { UserRole } from '../../types/user';
-import { Avatar } from '../avatar/Avatar';
 
 import './Chat.scss';
 
@@ -16,13 +17,29 @@ interface ChatProps {
     smallScreen?: boolean,
 }
 
+interface FormValues {
+    message: string;
+}
+
 function Chat({ smallScreen }: ChatProps) {
-    const { auth, chat, trade, removeTrade, sellerAvatarUrl } = useChat();
+    const {
+        auth,
+        chat,
+        removeTrade,
+        sellerAvatarUrl,
+        sendMessage,
+        trade,
+    } = useChat();
 
     if (!trade) {
         return (
             <div>No such trade</div>
         );
+    }
+
+    const handleSubmit = ({ message }: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
+        sendMessage(message);
+        resetForm();
     }
 
     return (
@@ -39,9 +56,13 @@ function Chat({ smallScreen }: ChatProps) {
                         </button>
                     </div>
                 </div>
-                <div>
-                    <b>{trade.paymentMethod}</b>
-                    <div>{trade.buyer.name} +{trade.buyer.positiveReputation}/-{trade.buyer.negativeReputation}</div>
+                <div className="chat__header__trade-info">
+                    <div className="chat__header__trade-info__payment-method">
+                        <b>{trade.paymentMethod}</b>
+                    </div>
+                    <div className="chat__header__trade-info__buyer">
+                        {trade.buyer.name} +{trade.buyer.positiveReputation}/-{trade.buyer.negativeReputation}
+                    </div>
                 </div>
                 <div>
                     {smallScreen && <Link to={`${PATH_DASHBOARD}/${trade.id}`}>Dashboard</Link>}
@@ -50,31 +71,50 @@ function Chat({ smallScreen }: ChatProps) {
             <div className="chat__body">
                 {chat && chat.messages.map((message, index) => (
                     <div
-                        className={classNames('chat__message', { 'chat__message_reversed': message.sender !== auth })}
+                        className={classNames('chat__message', {
+                            'chat__message_reversed': message.sender !== auth,
+                        })}
                         key={index}
                     >
                         <div className="chat__message__avatar">
-                            <Avatar
-                                url={message.sender === UserRole.Seller ? sellerAvatarUrl : trade?.buyer.avatarUrl}
-                            />
+                            <Avatar url={message.sender === UserRole.Seller
+                                ? sellerAvatarUrl
+                                : trade?.buyer.avatarUrl
+                            } />
                         </div>
                         <div>
-                            <div className={classNames(
-                                'chat__message__text',
-                                message.sender === auth ? 'chat__message__text_outgoing' : 'chat__message__text_incoming'
+                            <div className={classNames('chat__message__text', message.sender === auth
+                                ? 'chat__message__text_outgoing'
+                                : 'chat__message__text_incoming'
                             )}>
                                 {message.text}
                             </div>
-                            <div className={classNames('chat__message__date', { 'chat__message__date_align-right': message.sender !== auth })}>
+                            <div className={classNames('chat__message__date', {
+                                'chat__message__date_align-right': message.sender !== auth,
+                            })}>
                                 {message.sendTime.toLocaleString()}
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
-            <div className="chat__footer">
-                <input />
-            </div>
+            <Formik initialValues={{ message: '' }} onSubmit={handleSubmit}>
+                <Form>
+                    <div className="chat__footer">
+                        <div className="chat__footer__field">
+                            <Field
+                                name="message"
+                                placeholder="Type your message..."
+                            />
+                        </div>
+                        <div className="chat__footer__button">
+                            <button type="submit">
+                                Send
+                            </button>
+                        </div>
+                    </div>
+                </Form>
+            </Formik>
         </div>
     );
 }

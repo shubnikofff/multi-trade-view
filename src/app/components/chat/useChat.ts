@@ -50,20 +50,39 @@ function useChat() {
         }
     }, [chat, dispatch]);
 
+    const sendMessage = (text: string) => {
+        if (chat) {
+            dispatch(chatActions.updateChat({
+                id: chat.id,
+                changes: {
+                    messages: [
+                        ...chat.messages,
+                        {
+                            sender: auth,
+                            sendTime: new Date(),
+                            text,
+                        }
+                    ],
+                },
+            }));
+        }
+    };
+
     const removeTrade = () => {
         if (tradeEntity) {
             dispatch(tradeActions.removeTrade(tradeEntity.id));
             dispatch(chatActions.removeChat(tradeEntity.chatId));
             history.push(PATH_ROOT);
         }
-    }
+    };
 
     return {
         auth,
         chat,
-        trade,
         removeTrade,
         sellerAvatarUrl,
+        sendMessage,
+        trade,
     }
 }
 
