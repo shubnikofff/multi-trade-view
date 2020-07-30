@@ -2,7 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { Link } from 'react-router-dom';
+import Avatar from '../avatar';
 
+import { UserRole } from '../../types/user';
 import { useTradeList } from './useTradeList';
 
 import { PATH_CHAT } from '../../constants';
@@ -11,11 +13,18 @@ import './TradeList.scss';
 
 function TradeList() {
     const {
+        auth,
         chatDictionary,
         convert,
         selectedTradeId,
         trades,
     } = useTradeList();
+
+    if(auth === UserRole.Buyer) {
+        return (
+            <div>Not available for this user</div>
+        )
+    }
 
     return (
         <div className="trade-list">
@@ -28,8 +37,7 @@ function TradeList() {
                         <span
                             className={classNames('dot', chatDictionary[trade.chatId]?.hasUnreadMessages ? 'dot__green' : 'dot__gray')} />
                         <div>{`${trade.buyer.name} is buying`}</div>
-                        <img src={trade.buyer.avatarUrl} alt={trade.buyer.name}
-                             style={{ borderRadius: "50%", width: "50px" }} />
+                        <Avatar url={trade.buyer.avatarUrl} />
                         <div><b>{trade.paymentMethod}</b></div>
                         <div>{trade.amount} USD ({convert(trade.amount).toFixed(8)} BTC)</div>
                         <div>{`Status: ${trade.paid ? 'Paid' : 'Not Paid'}`}</div>

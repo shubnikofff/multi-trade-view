@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useRate } from '../../hooks';
+import { useAuth, useRate } from '../../hooks';
 
 import { selectors as chatSelectors } from '../../slices/chatsSlice';
 import { selectors as tradeSelectors } from '../../slices/tradesSlice';
@@ -13,6 +13,7 @@ import { Trade } from '../../types/trade';
 import { User } from '../../types/user';
 
 function useTradeList() {
+    const { auth } = useAuth();
     const { tradeId } = useParams();
     const { convert } = useRate();
 
@@ -31,6 +32,7 @@ function useTradeList() {
     const chatDictionary = useSelector<RootState, Dictionary<Chat>>(state => chatSelectors.selectEntities(state));
 
     return {
+        auth,
         chatDictionary,
         convert,
         selectedTradeId,

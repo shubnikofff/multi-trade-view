@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { actions as authActions } from '../../slices/authSlice';
+import { actions as authActions } from '../slices/authSlice';
 
-import { RootState } from '../../store';
-import { UserRole } from '../../types/user';
+import { RootState } from '../store';
+import { UserRole } from '../types/user';
 
-function useUserPanel() {
+function useAuth() {
     const dispatch = useDispatch();
 
     const auth = useSelector<RootState, UserRole>(state => state.auth);
@@ -18,4 +18,4 @@ function useUserPanel() {
     }
 }
 
-export { useUserPanel }
+export { useAuth }

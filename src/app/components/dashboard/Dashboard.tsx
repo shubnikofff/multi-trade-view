@@ -2,19 +2,31 @@ import React from 'react';
 
 import { useDashboard } from './useDashboard';
 
-import './Dashboard.scss';
 import { Link } from 'react-router-dom';
+
+import { UserRole } from '../../types/user';
+
 import { PATH_CHAT } from '../../constants';
+
+import './Dashboard.scss';
 
 interface DashboardProps {
     smallScreen?: boolean;
 }
 
 function Dashboard({ smallScreen }: DashboardProps) {
-    const { trade, releaseBitcoins } = useDashboard();
+    const { auth, trade, releaseBitcoins } = useDashboard();
+
+    if(auth === UserRole.Buyer) {
+        return (
+            <div>Not available for this user</div>
+        )
+    }
 
     if (!trade) {
-        return null;
+        return (
+            <div>No such trade</div>
+        );
     }
 
     return (

@@ -3,6 +3,7 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  background-color: #f5f7fa;
 
   &__header {
     padding: 1rem;
@@ -19,8 +20,43 @@
   }
 
   &__message {
+    display: flex;
     padding: 1rem;
-    border-bottom: 1px solid lightgray;
+
+    &__avatar {
+      padding: 1rem;
+    }
+
+    &__text {
+      padding: 1rem;
+      border-radius: 5px;
+      border: 1px solid lightgray;
+
+      &_incoming {
+        background-color: #5c7394;
+        color: white;
+        margin-left: 4rem;
+      }
+
+      &_outgoing {
+        background-color: white;
+        margin-right: 4rem;
+      }
+    }
+
+    &__date {
+      padding-top: 0.5rem;
+      color: gray;
+      font-size: 0.8rem;
+
+      &_align-right {
+        text-align: right;
+      }
+    }
+  }
+
+  &__message_reversed {
+    flex-direction: row-reverse;
   }
 
   &__footer {

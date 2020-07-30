@@ -1,32 +1,23 @@
 import React from 'react';
 
-import { Grid, Button } from '@material-ui/core';
+import { useAuth } from '../../hooks';
 
-import { useUserPanel } from './useUserPanel';
-import { UserRole } from '../../types/user';
+import './UserPanel.scss';
 
 function UserPanel() {
-    const { auth, switchUser } = useUserPanel()
+    const { auth, switchUser } = useAuth()
 
     return (
-        <Grid
-            container
-            justify="space-between"
-            alignItems="center"
-        >
-            <Grid item>
-                You are <b>{auth === UserRole.Seller ? 'Seller' : 'Buyer'}</b>
-            </Grid>
-            <Grid item>
-                <Button
-                    color="primary"
-                    variant="outlined"
-                    onClick={switchUser}
-                >
+        <div className="user-panel">
+            <div>
+                <span>You are <b>{auth}</b></span>
+            </div>
+            <div>
+                <button onClick={switchUser}>
                     Switch user
-                </Button>
-            </Grid>
-        </Grid>
+                </button>
+            </div>
+        </div>
     );
 }
 

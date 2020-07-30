@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import { useAuth } from '../../hooks';
 
 import { selectors as chatSelectors, actions as chatActions } from '../../slices/chatsSlice';
 import { selectors as tradeSelectors, actions as tradeActions } from '../../slices/tradesSlice';
@@ -11,9 +12,11 @@ import { RootState } from '../../store';
 import { Trade, TradeEntity } from '../../types/trade';
 import { User } from '../../types/user';
 
+import { sellerAvatarUrl } from '../../initialData';
 import { PATH_ROOT } from '../../constants';
 
 function useChat() {
+    const { auth } = useAuth();
     const { tradeId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
@@ -56,9 +59,11 @@ function useChat() {
     }
 
     return {
+        auth,
         chat,
         trade,
         removeTrade,
+        sellerAvatarUrl,
     }
 }
 
