@@ -41,6 +41,7 @@ function Dashboard({ smallScreen }: DashboardProps) {
             <div>{`Status: ${trade.paid ? 'Paid' : 'Not Paid'}`}</div>
             <div>
                 <button
+                    className="btn"
                     disabled={trade.paid}
                     onClick={releaseBitcoins}
                 >

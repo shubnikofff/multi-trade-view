@@ -13,7 +13,7 @@ function UserPanel() {
                 <span>You are <b>{auth}</b></span>
             </div>
             <div>
-                <button onClick={switchUser}>
+                <button className="btn" onClick={switchUser}>
                     Switch user
                 </button>
             </div>
