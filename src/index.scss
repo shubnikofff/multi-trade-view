@@ -36,3 +36,15 @@ code {
 .btn:active {
     transform: translateY(1px);
 }
+
+.text-primary {
+    color: $color-text-green;
+}
+
+.text-secondary {
+    color: $color-text-gray;
+}
+
+.text-danger {
+    color: $color-text-red;
+}

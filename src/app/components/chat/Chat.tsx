@@ -61,7 +61,10 @@ function Chat({ smallScreen }: ChatProps) {
                         <b>{trade.paymentMethod}</b>
                     </div>
                     <div className="chat__header__trade-info__buyer">
-                        {trade.buyer.name} +{trade.buyer.positiveReputation}/-{trade.buyer.negativeReputation}
+                        <span className="text-secondary">{trade.buyer.name} </span>
+                        <span className="text-primary">+{trade.buyer.positiveReputation}</span>
+                        <span className="text-secondary"> / </span>
+                        <span className="text-danger">-{trade.buyer.negativeReputation}</span>
                     </div>
                 </div>
                 <div>

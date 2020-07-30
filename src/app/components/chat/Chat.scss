@@ -26,7 +26,8 @@ $incoming-message-color: #5c7394;
       }
 
       &__buyer {
-        color: $color-secondary;
+        padding-top: 0.5*$gutter;
+        font-size: 0.9*$font-size;
       }
     }
   }
@@ -65,7 +66,7 @@ $incoming-message-color: #5c7394;
 
     &__date {
       padding-top: $gutter / 2;
-      color: $color-secondary;
+      color: $color-text-gray;
       font-size: 0.8*$font-size;
 
       &_align-right {
