@@ -29,22 +29,30 @@ function TradeList() {
     return (
         <div className="trade-list">
             {trades.map(trade => (
-                <div
-                    className={classNames('trade-list__item', { 'trade-list__item_active': trade.id === selectedTradeId })}
-                    key={trade.id}
-                >
-                    <Link to={`${PATH_CHAT}/${trade.id}`} key={trade.id}>
-                        <span className={classNames('dot', chatDictionary[trade.chatId]?.hasUnreadMessages
-                            ? 'dot_green'
-                            : 'dot_gray')}
-                        />
-                        <div>{`${trade.buyer.name} is buying`}</div>
-                        <Avatar url={trade.buyer.avatarUrl} />
-                        <div><b>{trade.paymentMethod}</b></div>
-                        <div>{trade.amount} USD ({convert(trade.amount).toFixed(8)} BTC)</div>
-                        <div>{`Status: ${trade.paid ? 'Paid' : 'Not Paid'}`}</div>
-                    </Link>
-                </div>
+                <Link to={`${PATH_CHAT}/${trade.id}`} key={trade.id}>
+                    <div
+                        className={classNames('trade-list__item', { 'trade-list__item_active': trade.id === selectedTradeId })}
+                        key={trade.id}
+                    >
+                        <div className="trade-list__item__left-side">
+                            <div>
+                                <span className={classNames('dot', chatDictionary[trade.chatId]?.hasUnreadMessages
+                                    ? 'dot_green'
+                                    : 'dot_gray')}
+                                />
+                            </div>
+                            <div>
+                                <div>{`${trade.buyer.name} is buying`}</div>
+                                <div><b>{trade.paymentMethod}</b></div>
+                                <div>{trade.amount} USD ({convert(trade.amount).toFixed(8)} BTC)</div>
+                            </div>
+                        </div>
+                        <div className="trade-list__item__right-side">
+                            <div><Avatar url={trade.buyer.avatarUrl} /></div>
+                            <div>{trade.paid ? 'Paid' : 'Not Paid'}</div>
+                        </div>
+                    </div>
+                </Link>
             ))}
         </div>
     );

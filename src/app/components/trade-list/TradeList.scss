@@ -5,15 +5,34 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid $color-border;
+
+  a {
+    text-decoration: none;
+    color: $color-text-black;
+  }
 
   &__item {
-    padding: 1rem;
+    padding: $gutter;
     border-bottom: 1px solid $color-border;
+    display: flex;
+    justify-content: space-between;
+
+    &__left-side {
+      display: flex;
+      width: 100%;
+
+    }
+
+    &__right-side {
+      display: flex;
+      flex-direction: column;
+      width: 5.5rem;
+      align-items: center;
+    }
   }
 
   &__item_active {
-    border: 1px solid $color-border;
-    border-radius: $border-radius;
     background-color: $color-bg-gray;
   }
 }
@@ -23,6 +42,7 @@
   border-radius: 50%;
   height: 10px;
   width: 10px;
+  margin: 0 0.5*$gutter;
 
   &_gray {
     background-color: $color-text-gray;
