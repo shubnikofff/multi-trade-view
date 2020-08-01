@@ -17,6 +17,10 @@ $incoming-message-color: #5c7394;
     justify-content: space-between;
     align-items: flex-start;
 
+    &__left-area {
+      display: flex;
+    }
+
     &__trade-info {
       display: flex;
       flex-direction: column;
@@ -31,12 +35,25 @@ $incoming-message-color: #5c7394;
         font-size: 0.9*$font-size;
       }
     }
+
+    button {
+      border-radius: 50%;
+      background-color: $color-text-gray;
+      padding: 8px 10px;
+      border: 0;
+    }
+
+    &__info-link {
+      background-color: $color-bg-gray;
+      border-color: red;
+    }
   }
 
   &__body {
     flex: 1;
     height: 100%;
     overflow-y: auto;
+    scroll-behavior: smooth;
   }
 
   &__message {
@@ -86,14 +103,16 @@ $incoming-message-color: #5c7394;
     background-color: $color-bg-white;
     align-items: center;
 
-    &__field {
+    &__left-area {
       flex: 1;
+      padding-left: $gutter;
 
       input {
         border: 0;
-        padding: $gutter 2*$gutter;
+        padding: $gutter;
         width: 100%;
         box-sizing: border-box;
+        background-color: $color-bg-white;
       }
 
       input:focus {
@@ -101,8 +120,20 @@ $incoming-message-color: #5c7394;
       }
     }
 
-    &__button {
+    &__right-area {
       padding-right: $gutter;
+
+      button {
+        color: $color-text-green;
+        background-color: $color-bg-white;
+        border: none;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      button:focus {
+        outline: none;
+      }
     }
   }
 }

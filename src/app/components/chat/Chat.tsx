@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 
 import { useChat } from './useChat';
 
+import Avatar from '../avatar';
+import NotAvailable from '../not-available';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Formik, Form, Field, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
-import { Avatar } from '../avatar/Avatar';
 
+import { faTrashAlt, faInfo, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { PATH_DASHBOARD, PATH_ROOT } from '../../constants';
 
 import { UserRole } from '../../types/user';
@@ -24,7 +27,7 @@ interface FormValues {
 function validate({ message }: FormValues) {
     let errors: Partial<FormValues> = {};
 
-    if(!message.trim()) {
+    if (!message.trim()) {
         errors.message = 'Required';
     }
 
@@ -41,14 +44,19 @@ function Chat({ smallScreen }: ChatProps) {
         trade,
     } = useChat();
 
+    const chatBodyBottom = useRef<HTMLDivElement>(null);
+
     if (!trade) {
         return (
-            <div>No such trade</div>
+            <NotAvailable>
+                No such trade
+            </NotAvailable>
         );
     }
 
     const handleSubmit = ({ message }: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
         sendMessage(message);
+        chatBodyBottom?.current?.scrollIntoView({ behavior: 'smooth' });
         resetForm();
     }
 
@@ -56,14 +64,20 @@ function Chat({ smallScreen }: ChatProps) {
         <div className="chat">
             <div className="chat__header">
                 <div>
-                    {smallScreen && <Link to={`${PATH_ROOT}`}>Back</Link>}
-                    <div>
-                        <button
-                            onClick={removeTrade}
-                            disabled={auth === UserRole.Buyer}
-                        >
-                            Delete
-                        </button>
+                    <div className="chat__header__left-area">
+                        {smallScreen && <div>
+							<Link to={`${PATH_ROOT}`}>
+								<FontAwesomeIcon icon={faChevronLeft} color="black" />
+							</Link>
+						</div>}
+                        <div>
+                            <button
+                                onClick={removeTrade}
+                                disabled={auth === UserRole.Buyer}
+                            >
+                                <FontAwesomeIcon icon={faTrashAlt} color="white" />
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div className="chat__header__trade-info">
@@ -78,7 +92,11 @@ function Chat({ smallScreen }: ChatProps) {
                     </div>
                 </div>
                 <div>
-                    {smallScreen && <Link to={`${PATH_DASHBOARD}/${trade.id}`}>Dashboard</Link>}
+                    {smallScreen && <div className="chat__header__info-link">
+						<Link to={`${PATH_DASHBOARD}/${trade.id}`}>
+							<FontAwesomeIcon icon={faInfo} color="black" />
+						</Link>
+					</div>}
                 </div>
             </div>
             <div className="chat__body">
@@ -110,6 +128,7 @@ function Chat({ smallScreen }: ChatProps) {
                         </div>
                     </div>
                 ))}
+                <div ref={chatBodyBottom} />
             </div>
             <Formik
                 initialValues={{ message: '' }}
@@ -118,13 +137,13 @@ function Chat({ smallScreen }: ChatProps) {
             >
                 <Form>
                     <div className="chat__footer">
-                        <div className="chat__footer__field">
+                        <div className="chat__footer__left-area">
                             <Field
                                 name="message"
                                 placeholder="Type your message..."
                             />
                         </div>
-                        <div className="chat__footer__button">
+                        <div className="chat__footer__right-area">
                             <button type="submit">
                                 Send
                             </button>
