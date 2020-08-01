@@ -12,4 +12,4 @@ function Avatar({ url }: AvatarProps) {
     );
 }
 
-export { Avatar }
+export default Avatar;

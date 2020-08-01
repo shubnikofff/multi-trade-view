@@ -6,7 +6,8 @@ import { useDashboard } from './useDashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
-import { Avatar } from '../avatar/Avatar';
+import Avatar from '../avatar';
+import NotAvailable from '../not-available';
 
 import { UserRole } from '../../types/user';
 
@@ -23,13 +24,17 @@ function Dashboard({ smallScreen }: DashboardProps) {
 
     if (auth === UserRole.Buyer) {
         return (
-            <div>Not available for this user</div>
+            <NotAvailable>
+                Not available for this user
+            </NotAvailable>
         )
     }
 
     if (!trade) {
         return (
-            <div>No such trade</div>
+            <NotAvailable>
+                No such trade
+            </NotAvailable>
         );
     }
 
@@ -38,7 +43,7 @@ function Dashboard({ smallScreen }: DashboardProps) {
             <div className="dashboard__top">
                 {smallScreen && <div className="dashboard__navigation-area">
 					<Link to={`${PATH_CHAT}/${trade.id}`}>
-						<FontAwesomeIcon icon={faChevronLeft} size="lg" color="black" />
+						<FontAwesomeIcon icon={faChevronLeft} color="black" />
 					</Link>
 				</div>}
                 <div>

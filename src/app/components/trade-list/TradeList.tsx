@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { Link } from 'react-router-dom';
 import Avatar from '../avatar';
+import NotAvailable from '../not-available';
 
 import { UserRole } from '../../types/user';
 import { useTradeList } from './useTradeList';
@@ -22,7 +23,9 @@ function TradeList() {
 
     if (auth === UserRole.Buyer) {
         return (
-            <div>Not available for this user</div>
+            <NotAvailable>
+                Not available for this user
+            </NotAvailable>
         )
     }
 
