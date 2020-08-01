@@ -35,21 +35,32 @@ function TradeList() {
                         key={trade.id}
                     >
                         <div className="trade-list__item__left-side">
-                            <div>
+                            <div className="text-secondary">
                                 <span className={classNames('dot', chatDictionary[trade.chatId]?.hasUnreadMessages
                                     ? 'dot_green'
                                     : 'dot_gray')}
                                 />
                             </div>
                             <div>
-                                <div>{`${trade.buyer.name} is buying`}</div>
+                                <div className="trade-list__item__left-side__buyer">
+                                    <b>{`${trade.buyer.name} is buying`}</b>
+                                </div>
                                 <div><b>{trade.paymentMethod}</b></div>
-                                <div>{trade.amount} USD ({convert(trade.amount).toFixed(8)} BTC)</div>
+                                <div className={classNames(
+                                    'trade-list__item__left-side__amount',
+                                    { 'text-secondary': trade.id !== selectedTradeId },
+                                )}>
+                                    {`${trade.amount} USD (${convert(trade.amount).toFixed(8)} BTC)`}
+                                </div>
                             </div>
                         </div>
                         <div className="trade-list__item__right-side">
                             <div><Avatar url={trade.buyer.avatarUrl} /></div>
-                            <div>{trade.paid ? 'Paid' : 'Not Paid'}</div>
+                            <div className={classNames('trade-list__item__status', trade.paid
+                                ? 'trade-list__item__status_green'
+                                : 'trade-list__item__status_gray')}>
+                                <b>{trade.paid ? 'Paid' : 'Not paid'}</b>
+                            </div>
                         </div>
                     </div>
                 </Link>

@@ -21,6 +21,16 @@ interface FormValues {
     message: string;
 }
 
+function validate({ message }: FormValues) {
+    let errors: Partial<FormValues> = {};
+
+    if(!message.trim()) {
+        errors.message = 'Required';
+    }
+
+    return errors;
+}
+
 function Chat({ smallScreen }: ChatProps) {
     const {
         auth,
@@ -101,7 +111,11 @@ function Chat({ smallScreen }: ChatProps) {
                     </div>
                 ))}
             </div>
-            <Formik initialValues={{ message: '' }} onSubmit={handleSubmit}>
+            <Formik
+                initialValues={{ message: '' }}
+                onSubmit={handleSubmit}
+                validate={validate}
+            >
                 <Form>
                     <div className="chat__footer">
                         <div className="chat__footer__field">
