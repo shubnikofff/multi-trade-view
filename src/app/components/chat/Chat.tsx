@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Formik, Form, Field, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
 
-import { faTrashAlt, faInfo, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { PATH_DASHBOARD, PATH_ROOT } from '../../constants';
 
 import { UserRole } from '../../types/user';
@@ -65,7 +65,7 @@ function Chat({ smallScreen }: ChatProps) {
             <div className="chat__header">
                 <div>
                     <div className="chat__header__left-area">
-                        {smallScreen && <div>
+                        {smallScreen && <div className="chat__header__left-area_back-link">
 							<Link to={`${PATH_ROOT}`}>
 								<FontAwesomeIcon icon={faChevronLeft} color="black" />
 							</Link>
@@ -92,11 +92,9 @@ function Chat({ smallScreen }: ChatProps) {
                     </div>
                 </div>
                 <div>
-                    {smallScreen && <div className="chat__header__info-link">
-						<Link to={`${PATH_DASHBOARD}/${trade.id}`}>
-							<FontAwesomeIcon icon={faInfo} color="black" />
-						</Link>
-					</div>}
+                    {smallScreen && <Link to={`${PATH_DASHBOARD}/${trade.id}`}>
+						<FontAwesomeIcon icon={faChevronRight} color="black" />
+					</Link>}
                 </div>
             </div>
             <div className="chat__body">

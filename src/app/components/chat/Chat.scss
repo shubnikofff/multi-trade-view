@@ -19,6 +19,18 @@ $incoming-message-color: #5c7394;
 
     &__left-area {
       display: flex;
+      position: fixed;
+
+      &_back-link {
+        padding-right: $gutter;
+      }
+
+      button {
+        border-radius: 50%;
+        background-color: $color-text-gray;
+        padding: 8px 10px;
+        border: 0;
+      }
     }
 
     &__trade-info {
@@ -34,18 +46,6 @@ $incoming-message-color: #5c7394;
         padding-top: 0.5*$gutter;
         font-size: 0.9*$font-size;
       }
-    }
-
-    button {
-      border-radius: 50%;
-      background-color: $color-text-gray;
-      padding: 8px 10px;
-      border: 0;
-    }
-
-    &__info-link {
-      background-color: $color-bg-gray;
-      border-color: red;
     }
   }
 
