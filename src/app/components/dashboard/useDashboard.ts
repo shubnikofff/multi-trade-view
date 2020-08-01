@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAuth } from '../../hooks';
+import { useAuth, useRate } from '../../hooks';
 
 import { actions as tradeActions, selectors as tradeSelectors } from '../../slices/tradesSlice';
 import { selectors as userSelectors } from '../../slices/usersSlice';
@@ -11,6 +11,7 @@ import { User } from '../../types/user';
 
 function useDashboard() {
     const { auth } = useAuth();
+    const { convert } = useRate();
     const { tradeId } = useParams();
     const dispatch = useDispatch();
 
@@ -35,6 +36,7 @@ function useDashboard() {
 
     return {
         auth,
+        convert,
         trade,
         releaseBitcoins,
     }

@@ -38,6 +38,12 @@ code {
     transform: translateY(1px);
 }
 
+.btn-outline {
+    color: $color-text-green;
+    background-color: $color-bg-white;
+    border: 1px solid $color-text-green;
+}
+
 .text-primary {
     color: $color-text-green;
 }
