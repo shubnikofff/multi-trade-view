@@ -5,9 +5,9 @@ import { shallow } from 'enzyme';
 import Avatar from '../Avatar';
 
 describe('Component Avatar', () => {
-    it('should match snapshot', () => {
-        const wrapper = shallow(<Avatar url="some-url" />);
+    const wrapper = shallow(<Avatar url="some-url" />);
 
+    it('should match snapshot', () => {
         expect(wrapper).toMatchSnapshot();
     });
 });
