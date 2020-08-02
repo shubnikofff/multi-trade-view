@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const slice = createSlice({
-    name: 'price',
+    name: 'rate',
     initialState: 10000,
     reducers: {
         setRate: (state, { payload }: PayloadAction<number>) => payload,
