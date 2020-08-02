@@ -33,6 +33,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -47,10 +50,17 @@
   },
   "devDependencies": {
     "@types/classnames": "^2.2.10",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/faker": "^4.1.12",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
+    "@types/react-test-renderer": "^16.9.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
     "faker": "^4.1.0",
-    "node-sass": "^4.14.1"
+    "node-sass": "^4.14.1",
+    "react-test-renderer": "^16.13.1"
   }
 }
