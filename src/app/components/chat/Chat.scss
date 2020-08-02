@@ -8,7 +8,6 @@ $incoming-message-color: #5c7394;
   display: flex;
   flex-direction: column;
   background-color: $color-bg-gray;
-  border-right: 1px solid $color-border;
 
   &__header {
     padding: $gutter;
@@ -19,7 +18,7 @@ $incoming-message-color: #5c7394;
 
     &__left-area {
       display: flex;
-      position: fixed;
+      position: relative;
 
       &_back-link {
         padding-right: $gutter;
@@ -30,6 +29,8 @@ $incoming-message-color: #5c7394;
         background-color: $color-text-gray;
         padding: 8px 10px;
         border: 0;
+        position: absolute;
+        left: $gutter ;
       }
     }
 
