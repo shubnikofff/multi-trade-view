@@ -5,7 +5,7 @@ import { Chat } from './types/chat';
 import { User, UserRole } from './types/user';
 
 const USERS_NUMBER = 3;
-const TRADES_NUMBER = 5;
+const TRADES_NUMBER = 4;
 const MESSAGES_MAX_NUMBER = 10;
 
 const users: User[] = Array.from({ length: USERS_NUMBER }, (_, index: number) => ({
@@ -14,7 +14,7 @@ const users: User[] = Array.from({ length: USERS_NUMBER }, (_, index: number) =>
     name: faker.name.firstName(),
     positiveReputation: faker.random.number({ min: 1, max: 100 }),
     negativeReputation: faker.random.number({ min: 1, max: 100 }),
-    ofTrades: faker.random.number(100),
+    c: faker.random.number(100),
 }));
 
 const trades: TradeEntity[] = Array.from({ length: TRADES_NUMBER }, (_, index: number) => ({
