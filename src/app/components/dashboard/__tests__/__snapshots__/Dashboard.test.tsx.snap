@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Dashboard should match snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "pathname": "/dashboard/1",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/dashboard/1",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Route
+      path="/dashboard/:tradeId"
+    >
+      <Memo(Dashboard)>
+        <div
+          className="dashboard"
+        >
+          <div
+            className="dashboard__top"
+          >
+            <div>
+              You are trading with 
+              <b>
+                username
+              </b>
+            </div>
+            <div
+              className="dashboard__start-time"
+            >
+              Started 
+              2020-9-1 12:00:00 AM
+            </div>
+            <div
+              className="dashboard__action-area"
+            >
+              <button
+                className="btn"
+                disabled={false}
+                onClick={[Function]}
+              >
+                Release bitcoins
+              </button>
+            </div>
+          </div>
+          <table
+            className="dashboard__bottom"
+          >
+            <tbody>
+              <tr>
+                <td>
+                  <Avatar
+                    url="url"
+                  >
+                    <img
+                      alt="Avatar"
+                      className="avatar"
+                      src="url"
+                    />
+                  </Avatar>
+                  <div
+                    className="chat__header__trade-info__buyer"
+                  >
+                    <span
+                      className="text-primary"
+                    >
+                      +
+                      25
+                    </span>
+                    <span>
+                       / 
+                    </span>
+                    <span
+                      className="text-danger"
+                    >
+                      -
+                      12
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <div
+                    className="dashboard__bottom_label"
+                  >
+                    <b>
+                      # Of trades
+                    </b>
+                  </div>
+                  <div>
+                    4
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div
+                    className="dashboard__bottom_label"
+                  >
+                    <b>
+                      Trade status
+                    </b>
+                  </div>
+                  <div
+                    className="dashboard__status dashboard__status_gray"
+                  >
+                    Not paid
+                  </div>
+                </td>
+                <td>
+                  <div
+                    className="dashboard__bottom_label"
+                  >
+                    <b>
+                      Trade hash
+                    </b>
+                  </div>
+                  <div
+                    className="text-secondary"
+                  >
+                    abc42
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div
+                    className="dashboard__bottom_label"
+                  >
+                    <b>
+                      Amount USD
+                    </b>
+                  </div>
+                  <div>
+                    100.00
+                  </div>
+                </td>
+                <td>
+                  <div
+                    className="dashboard__bottom_label"
+                  >
+                    <b>
+                      Amount BTC
+                    </b>
+                  </div>
+                  <div
+                    className="text-secondary"
+                  >
+                    0.01000000
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Memo(Dashboard)>
+    </Route>
+  </Router>
+</Provider>
+`;

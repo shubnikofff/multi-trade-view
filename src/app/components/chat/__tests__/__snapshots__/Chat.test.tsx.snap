@@ -1,0 +1,276 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component chat should match snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "pathname": "/chat/1",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/chat/1",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Route
+      exact={true}
+      path="/chat/:tradeId"
+    >
+      <Memo(Chat)>
+        <div
+          className="chat"
+        >
+          <div
+            className="chat__header"
+          >
+            <div>
+              <div
+                className="chat__header__left-area"
+              >
+                <div>
+                  <button
+                    disabled={false}
+                    onClick={[Function]}
+                  >
+                    <FontAwesomeIcon
+                      border={false}
+                      className=""
+                      color="white"
+                      fixedWidth={false}
+                      flip={null}
+                      icon={
+                        Object {
+                          "icon": Array [
+                            448,
+                            512,
+                            Array [],
+                            "f2ed",
+                            "M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z",
+                          ],
+                          "iconName": "trash-alt",
+                          "prefix": "fas",
+                        }
+                      }
+                      inverse={false}
+                      listItem={false}
+                      mask={null}
+                      pull={null}
+                      pulse={false}
+                      rotation={null}
+                      size={null}
+                      spin={false}
+                      swapOpacity={false}
+                      symbol={false}
+                      title=""
+                      transform={null}
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="svg-inline--fa fa-trash-alt fa-w-14 "
+                        color="white"
+                        data-icon="trash-alt"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        style={Object {}}
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"
+                          fill="currentColor"
+                          style={Object {}}
+                        />
+                      </svg>
+                    </FontAwesomeIcon>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              className="chat__header__trade-info"
+            >
+              <div
+                className="chat__header__trade-info__payment-method"
+              >
+                <b>
+                  Amazon Gift Card
+                </b>
+              </div>
+              <div
+                className="chat__header__trade-info__buyer"
+              >
+                <span
+                  className="text-secondary"
+                >
+                  username
+                   
+                </span>
+                <span
+                  className="text-primary"
+                >
+                  +
+                  25
+                </span>
+                <span
+                  className="text-secondary"
+                >
+                   / 
+                </span>
+                <span
+                  className="text-danger"
+                >
+                  -
+                  12
+                </span>
+              </div>
+            </div>
+            <div />
+          </div>
+          <div
+            className="chat__body"
+          >
+            <div
+              className="chat__message chat__message_reversed"
+              key="0"
+            >
+              <div
+                className="chat__message__avatar"
+              >
+                <Avatar
+                  url="url"
+                >
+                  <img
+                    alt="Avatar"
+                    className="avatar"
+                    src="url"
+                  />
+                </Avatar>
+              </div>
+              <div>
+                <div
+                  className="chat__message__text chat__message__text_incoming"
+                />
+                <div
+                  className="chat__message__date chat__message__date_align-right"
+                >
+                  2020-9-1 12:00:00 AM
+                </div>
+              </div>
+            </div>
+            <div
+              className="chat__message"
+              key="1"
+            >
+              <div
+                className="chat__message__avatar"
+              >
+                <Avatar
+                  url="https://s3.amazonaws.com/uifaces/faces/twitter/ssbb_me/128.jpg"
+                >
+                  <img
+                    alt="Avatar"
+                    className="avatar"
+                    src="https://s3.amazonaws.com/uifaces/faces/twitter/ssbb_me/128.jpg"
+                  />
+                </Avatar>
+              </div>
+              <div>
+                <div
+                  className="chat__message__text chat__message__text_outgoing"
+                />
+                <div
+                  className="chat__message__date"
+                >
+                  2020-9-1 12:00:00 AM
+                </div>
+              </div>
+            </div>
+            <div />
+          </div>
+          <Formik
+            initialValues={
+              Object {
+                "message": "",
+              }
+            }
+            onSubmit={[Function]}
+            validate={[Function]}
+          >
+            <Form>
+              <form
+                action="#"
+                onReset={[Function]}
+                onSubmit={[Function]}
+              >
+                <div
+                  className="chat__footer"
+                >
+                  <div
+                    className="chat__footer__left-area"
+                  >
+                    <Field
+                      name="message"
+                      placeholder="Type your message..."
+                    >
+                      <input
+                        name="message"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        placeholder="Type your message..."
+                        value=""
+                      />
+                    </Field>
+                  </div>
+                  <div
+                    className="chat__footer__right-area"
+                  >
+                    <button
+                      type="submit"
+                    >
+                      Send
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </Form>
+          </Formik>
+        </div>
+      </Memo(Chat)>
+    </Route>
+  </Router>
+</Provider>
+`;

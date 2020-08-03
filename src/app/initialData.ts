@@ -38,7 +38,7 @@ const chats: Chat[] = Array.from({ length: TRADES_NUMBER }, (_, index: number) =
     })).sort((a, b) => a.sendTime.valueOf() - b.sendTime.valueOf()),
 }));
 
-const sellerAvatarUrl = faker.image.avatar();
+const sellerAvatarUrl = 'https://s3.amazonaws.com/uifaces/faces/twitter/ssbb_me/128.jpg';
 
 export {
     chats,
