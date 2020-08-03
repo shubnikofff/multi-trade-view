@@ -13,13 +13,13 @@ import { Trade, TradeEntity } from '../../types/trade';
 import { User } from '../../types/user';
 
 import { sellerAvatarUrl } from '../../initialData';
-import { PATH_ROOT } from '../../constants';
+import { PATH_ROOT } from '../../paths';
 
 function useChat() {
-    const { auth } = useAuth();
-    const { tradeId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
+    const { auth } = useAuth();
+    const { tradeId } = useParams();
 
     const { chat, trade, tradeEntity } = useSelector<RootState, { trade?: Trade, chat?: Chat, tradeEntity?: TradeEntity }>(
         state => {

@@ -8,7 +8,7 @@ import NotAvailable from '../not-available';
 import { UserRole } from '../../types/user';
 import { useTradeList } from './useTradeList';
 
-import { PATH_CHAT } from '../../constants';
+import { PATH_CHAT } from '../../paths';
 
 import './TradeList.scss';
 
@@ -48,7 +48,9 @@ function TradeList() {
                                 <div className="trade-list__item__left-side__buyer">
                                     <b>{`${trade.buyer.name} is buying`}</b>
                                 </div>
-                                <div><b>{trade.paymentMethod}</b></div>
+                                <div>
+                                    <b>{trade.paymentMethod}</b>
+                                </div>
                                 <div className={classNames(
                                     'trade-list__item__left-side__amount',
                                     { 'text-secondary': trade.id !== selectedTradeId },
@@ -58,7 +60,9 @@ function TradeList() {
                             </div>
                         </div>
                         <div className="trade-list__item__right-side">
-                            <div><Avatar url={trade.buyer.avatarUrl} /></div>
+                            <div>
+                                <Avatar url={trade.buyer.avatarUrl} />
+                            </div>
                             <div className={classNames('trade-list__item__status', trade.paid
                                 ? 'trade-list__item__status_green'
                                 : 'trade-list__item__status_gray')}>

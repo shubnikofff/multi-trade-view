@@ -11,7 +11,7 @@ import NotAvailable from '../not-available';
 
 import { UserRole } from '../../types/user';
 
-import { PATH_CHAT } from '../../constants';
+import { PATH_CHAT } from '../../paths';
 
 import './Dashboard.scss';
 

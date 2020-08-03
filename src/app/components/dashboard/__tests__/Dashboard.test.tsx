@@ -8,7 +8,7 @@ import { Router, Route } from 'react-router-dom'
 import Dashboard from '../Dashboard';
 
 import { store } from '../../../mockStore';
-import { PATH_DASHBOARD } from '../../../constants';
+import { PATH_DASHBOARD } from '../../../paths';
 
 describe('Component Dashboard', () => {
     const history = createMemoryHistory({

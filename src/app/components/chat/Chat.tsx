@@ -10,7 +10,7 @@ import { Formik, Form, Field, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
 
 import { faTrashAlt, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { PATH_DASHBOARD, PATH_ROOT } from '../../constants';
+import { PATH_DASHBOARD, PATH_ROOT } from '../../paths';
 
 import { UserRole } from '../../types/user';
 

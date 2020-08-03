@@ -22,11 +22,11 @@ import {
     PATH_CHAT,
     PATH_DASHBOARD,
     PATH_ROOT,
-} from './constants';
+} from './paths';
 
 import './App.scss';
 
-const MEDIA_QUERY_SMALL_SCREEN = 'screen and (max-width: 499px)';
+const MEDIA_QUERY_SMALL_SCREEN = 'screen and (max-width: 599px)';
 
 function App() {
     useApp();

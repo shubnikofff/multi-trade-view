@@ -8,7 +8,7 @@ import { Router, Route } from 'react-router-dom'
 import Chat from '../Chat';
 
 import { store } from '../../../mockStore';
-import { PATH_CHAT } from '../../../constants';
+import { PATH_CHAT } from '../../../paths';
 
 describe('Component chat', () => {
     const history = createMemoryHistory({
