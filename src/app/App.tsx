@@ -26,7 +26,7 @@ import {
 
 import './App.scss';
 
-const MEDIA_QUERY_SMALL_SCREEN = 'screen and (max-width: 399px)';
+const MEDIA_QUERY_SMALL_SCREEN = 'screen and (max-width: 499px)';
 
 function App() {
     useApp();

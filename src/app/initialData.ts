@@ -14,7 +14,6 @@ const users: User[] = Array.from({ length: USERS_NUMBER }, (_, index: number) =>
     name: faker.name.firstName(),
     positiveReputation: faker.random.number({ min: 1, max: 100 }),
     negativeReputation: faker.random.number({ min: 1, max: 100 }),
-    c: faker.random.number(100),
 }));
 
 const trades: TradeEntity[] = Array.from({ length: TRADES_NUMBER }, (_, index: number) => ({
