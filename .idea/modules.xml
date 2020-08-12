@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/multi-trade-view.iml" filepath="$PROJECT_DIR$/multi-trade-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/multi-trade-view.iml" filepath="$PROJECT_DIR$/.idea/multi-trade-view.iml" />
     </modules>
   </component>
 </project>

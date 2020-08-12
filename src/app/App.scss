@@ -1,0 +1,17 @@
+@import "variables";
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    padding: $gutter;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__content {
+    overflow-y: hidden;
+    flex: 1;
+  }
+}

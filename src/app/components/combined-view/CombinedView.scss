@@ -1,0 +1,15 @@
+@import "../../variables";
+
+.combined-view {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+
+  & > div:first-child {
+    border-right: 1px solid $color-border;
+  }
+
+  & > div:nth-child(3) {
+    border-left: 1px solid $color-border;
+  }
+}

@@ -1,0 +1,57 @@
+@import "app/variables";
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $color-text-black;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.btn {
+    border: 1px solid $color-border;
+    border-radius: 10*$border-radius;
+    background-color: $color-bg-green;
+    color: white;
+    padding: 0.5*$gutter 2*$gutter;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+}
+
+.btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-outline {
+    color: $color-text-green;
+    background-color: $color-bg-white;
+    border: 1px solid $color-text-green;
+}
+
+.text-primary {
+    color: $color-text-green;
+}
+
+.text-secondary {
+    color: $color-text-gray;
+}
+
+.text-danger {
+    color: $color-text-red;
+}

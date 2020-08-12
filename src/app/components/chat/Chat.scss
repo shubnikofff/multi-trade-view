@@ -1,0 +1,140 @@
+@import "../../variables";
+
+$incoming-message-color: #5c7394;
+
+.chat {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-bg-gray;
+
+  &__header {
+    padding: $gutter;
+    border-bottom: 1px solid $color-border;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &__left-area {
+      display: flex;
+      position: relative;
+
+      &_back-link {
+        padding-right: $gutter;
+      }
+
+      button {
+        border-radius: 50%;
+        background-color: $color-text-gray;
+        padding: 8px 10px;
+        border: 0;
+        position: absolute;
+        left: $gutter ;
+      }
+    }
+
+    &__trade-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &__payment-method {
+        font-size: large;
+      }
+
+      &__buyer {
+        padding-top: 0.5*$gutter;
+        font-size: 0.9*$font-size;
+      }
+    }
+  }
+
+  &__body {
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+
+  &__message {
+    display: flex;
+    padding: $gutter;
+
+    &__avatar {
+      padding: $gutter;
+    }
+
+    &__text {
+      padding: $gutter;
+      border-radius: $border-radius;
+      border: 1px solid $color-border;
+      font-size: 0.9*$font-size;
+
+      &_incoming {
+        background-color: $incoming-message-color;
+        color: $color-bg-white;
+        margin-left: 4*$gutter;
+      }
+
+      &_outgoing {
+        background-color: $color-bg-white;
+        margin-right: 4*$gutter;
+      }
+    }
+
+    &__date {
+      padding-top: $gutter / 2;
+      color: $color-text-gray;
+      font-size: 0.8*$font-size;
+
+      &_align-right {
+        text-align: right;
+      }
+    }
+  }
+
+  &__message_reversed {
+    flex-direction: row-reverse;
+  }
+
+  &__footer {
+    display: flex;
+    margin: $gutter;
+    background-color: $color-bg-white;
+    align-items: center;
+
+    &__left-area {
+      flex: 1;
+      padding-left: $gutter;
+
+      input {
+        border: 0;
+        padding: $gutter;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: $color-bg-white;
+      }
+
+      input:focus {
+        outline-width: 0;
+      }
+    }
+
+    &__right-area {
+      padding-right: $gutter;
+
+      button {
+        color: $color-text-green;
+        background-color: $color-bg-white;
+        border: none;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      button:focus {
+        outline: none;
+      }
+    }
+  }
+}

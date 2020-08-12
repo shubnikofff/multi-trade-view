@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component UserPanel should match snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <UserPanel>
+    <div
+      className="user-panel"
+    >
+      <div>
+        <span>
+          You are 
+          <b>
+            seller
+          </b>
+        </span>
+      </div>
+      <div>
+        <button
+          className="btn btn-outline"
+          onClick={[Function]}
+        >
+          Switch user
+        </button>
+      </div>
+    </div>
+  </UserPanel>
+</Provider>
+`;
+
+exports[`Component UserPanel should switch user to buyer 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <UserPanel>
+    <div
+      className="user-panel"
+    >
+      <div>
+        <span>
+          You are 
+          <b>
+            buyer
+          </b>
+        </span>
+      </div>
+      <div>
+        <button
+          className="btn btn-outline"
+          onClick={[Function]}
+        >
+          Switch user
+        </button>
+      </div>
+    </div>
+  </UserPanel>
+</Provider>
+`;

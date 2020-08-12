@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Avatar should match snapshot 1`] = `
+<img
+  alt="Avatar"
+  className="avatar"
+  src="some-url"
+/>
+`;

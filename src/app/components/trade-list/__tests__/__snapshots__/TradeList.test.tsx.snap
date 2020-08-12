@@ -1,0 +1,192 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component TradeList should match snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <TradeList>
+        <div
+          className="trade-list"
+        >
+          <Link
+            key="1"
+            to="/chat/1"
+          >
+            <LinkAnchor
+              href="/chat/1"
+              navigate={[Function]}
+            >
+              <a
+                href="/chat/1"
+                onClick={[Function]}
+              >
+                <div
+                  className="trade-list__item"
+                  key="1"
+                >
+                  <div
+                    className="trade-list__item__left-side"
+                  >
+                    <div
+                      className="text-secondary"
+                    >
+                      <span
+                        className="dot dot_gray"
+                      />
+                    </div>
+                    <div>
+                      <div
+                        className="trade-list__item__left-side__buyer"
+                      >
+                        <b>
+                          username is buying
+                        </b>
+                      </div>
+                      <div>
+                        <b>
+                          Amazon Gift Card
+                        </b>
+                      </div>
+                      <div
+                        className="trade-list__item__left-side__amount text-secondary"
+                      >
+                        100 USD (0.01000000 BTC)
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="trade-list__item__right-side"
+                  >
+                    <div>
+                      <Avatar
+                        url="url"
+                      >
+                        <img
+                          alt="Avatar"
+                          className="avatar"
+                          src="url"
+                        />
+                      </Avatar>
+                    </div>
+                    <div
+                      className="trade-list__item__status trade-list__item__status_gray"
+                    >
+                      <b>
+                        Not paid
+                      </b>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </LinkAnchor>
+          </Link>
+          <Link
+            key="2"
+            to="/chat/2"
+          >
+            <LinkAnchor
+              href="/chat/2"
+              navigate={[Function]}
+            >
+              <a
+                href="/chat/2"
+                onClick={[Function]}
+              >
+                <div
+                  className="trade-list__item"
+                  key="2"
+                >
+                  <div
+                    className="trade-list__item__left-side"
+                  >
+                    <div
+                      className="text-secondary"
+                    >
+                      <span
+                        className="dot dot_gray"
+                      />
+                    </div>
+                    <div>
+                      <div
+                        className="trade-list__item__left-side__buyer"
+                      >
+                        <b>
+                          username is buying
+                        </b>
+                      </div>
+                      <div>
+                        <b>
+                          iTunes Gift Card
+                        </b>
+                      </div>
+                      <div
+                        className="trade-list__item__left-side__amount text-secondary"
+                      >
+                        150 USD (0.01500000 BTC)
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="trade-list__item__right-side"
+                  >
+                    <div>
+                      <Avatar
+                        url="url"
+                      >
+                        <img
+                          alt="Avatar"
+                          className="avatar"
+                          src="url"
+                        />
+                      </Avatar>
+                    </div>
+                    <div
+                      className="trade-list__item__status trade-list__item__status_green"
+                    >
+                      <b>
+                        Paid
+                      </b>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </LinkAnchor>
+          </Link>
+        </div>
+      </TradeList>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;

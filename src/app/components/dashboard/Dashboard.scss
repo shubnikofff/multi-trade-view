@@ -1,0 +1,61 @@
+@import "../../variables";
+
+.dashboard {
+  padding: $gutter;
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__navigation-area {
+    padding-left: 2*$gutter;
+    position: fixed;
+    width: 100%;
+  }
+
+  &__start-time {
+    color: $color-text-gray;
+    font-size: 0.9*$font-size;
+    padding-top: 0.5*$gutter;
+  }
+
+  &__action-area {
+    padding: 2*$gutter 0;
+  }
+
+  &__bottom {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+    td {
+      text-align: center;
+      padding: $gutter;
+      border-bottom: 1px solid $color-border;
+    }
+
+    td:first-child {
+      border-right: 1px solid $color-border;
+    }
+
+    &_label {
+      text-transform: uppercase;
+      padding-bottom: $gutter;
+    }
+  }
+
+  &__status {
+    text-transform: uppercase;
+
+    &_green {
+      color: $color-text-green;
+    }
+
+    &_gray {
+      color: $color-text-gray;
+    }
+  }
+
+}

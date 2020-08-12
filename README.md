@@ -1,44 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Task description
 
-## Available Scripts
+The web app shown on the image is a three column layout and in its functionality, it's similar to intercom or webmail application. This single page application should be built on with React with TypeScript. 
 
-In the project directory, you can run:
+Regarding the design, you are not required to follow it completely, but make sure the outcome looks nice.
+						
+Most importantly, think about smaller screen sizes and usability on them, as that is where most of the traffic comes from.
 
-### `yarn start`
+### Guidance:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1.	On the left side, you have all the items (we call them trades). One item should contain key information about trade: buyer username, payment method, amount, trade status (Not Paid/Paid) and if there has been new messages displayed as a green/grey dot on the left side.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+2.	Selecting a trade should load the chat with user and trade information.
 
-### `yarn test`
+3.	The message dot should turn grey once the chat is loaded and the unseen message becomes visible for the user.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4.	When selecting a trade item, the route should change and when reloading the page it should select the corresponding trade.
 
-### `yarn build`
+5.	In the middle, you have private trade chat.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+6.	On top of it you have the payment method name again and the buyer's username with a positive and negative reputation.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+7.	The messages are listed so that your messages are with the user image on the left and the buyer messages with user image on the right.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+8.	In the bottom, you have the message sending component.
 
-### `yarn eject`
+9.	When clicking on the delete icon on the top, the trade should be deleted from the list. 
+	
+10.	You should be able to switch the chat from buyer to seller so that I can write as a buyer or as a seller. (you can just add a button somewhere where you can click either buyer/seller to switch).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+11.	You should be able to send messages to the trade chat. When sending messages to the trade chat as a buyer, the seller (the one using multi-trade view) should see this trade message notification dot turn green.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+12.	On the right side, there is not much happening except for showing the trade information. There is a "Release bitcoins" button for when the other user has marked the trade paid.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Tips:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Use Redux for managing state.
+- All initial data should be hardcoded and any backend is not required. 
+- All real-time information just pulled with timeout events randomly https://api.coindesk.com/v1/bpi/currentprice/USD.json
