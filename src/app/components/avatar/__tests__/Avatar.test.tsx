@@ -2,7 +2,7 @@ import React from 'react';
 
 import { shallow } from 'enzyme';
 
-import Avatar from '../Avatar';
+import Avatar from '@components/avatar';
 
 describe('Component Avatar', () => {
     const wrapper = shallow(<Avatar url="some-url" />);

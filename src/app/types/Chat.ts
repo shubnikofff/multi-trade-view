@@ -1,12 +1,12 @@
-import { UserRole } from './user';
+import { UserRoleEnum } from '@type/User';
 
-export interface Message {
+export type Message = {
     sendTime: Date;
     text: string;
-    sender: UserRole;
+    sender: UserRoleEnum;
 }
 
-export interface Chat {
+export type Chat = {
     id: number;
     hasUnreadMessages: boolean;
     messages: Message[];

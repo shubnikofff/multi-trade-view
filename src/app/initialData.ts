@@ -1,8 +1,8 @@
 import faker from 'faker';
 
-import { TradeEntity } from './types/trade';
-import { Chat } from './types/chat';
-import { User, UserRole } from './types/user';
+import { Chat } from '@type/Chat';
+import { TradeEntity } from '@type/Trade';
+import { User, UserRoleEnum } from '@type/User';
 
 const USERS_NUMBER = 3;
 const TRADES_NUMBER = 4;
@@ -31,7 +31,7 @@ const chats: Chat[] = Array.from({ length: TRADES_NUMBER }, (_, index: number) =
     id: index + 1,
     hasUnreadMessages: faker.random.boolean(),
     messages: Array.from({ length: faker.random.number({ min: 1, max: MESSAGES_MAX_NUMBER }) }, () => ({
-        sender: faker.random.arrayElement([UserRole.Seller, UserRole.Buyer]),
+        sender: faker.random.arrayElement([UserRoleEnum.Seller, UserRoleEnum.Buyer]),
         sendTime: faker.date.between(trades[index].started, new Date()),
         text: faker.lorem.text(),
     })).sort((a, b) => a.sendTime.valueOf() - b.sendTime.valueOf()),

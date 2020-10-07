@@ -1,4 +1,4 @@
-export interface User {
+export type User = {
     id: number;
     name: string;
     avatarUrl: string;
@@ -6,7 +6,7 @@ export interface User {
     negativeReputation: number;
 }
 
-export enum UserRole {
+export enum UserRoleEnum {
     Buyer = 'buyer',
     Seller = 'seller',
 }

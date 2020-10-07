@@ -1,18 +1,18 @@
 import React, { useRef } from 'react';
 import classNames from 'classnames';
 
-import { useChat } from './useChat';
-
-import Avatar from '../avatar';
-import NotAvailable from '../not-available';
+import Avatar from '@components/avatar';
+import NotAvailable from '@components/not-available';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Formik, Form, Field, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
 
 import { faTrashAlt, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { PATH_DASHBOARD, PATH_ROOT } from '../../paths';
+import { PATH_DASHBOARD, PATH_ROOT } from '@app/paths';
 
-import { UserRole } from '../../types/user';
+import { UserRoleEnum } from '@type/User';
+
+import { useChat } from './useChat';
 
 import './Chat.scss';
 
@@ -73,7 +73,7 @@ function Chat({ smallScreen }: ChatProps) {
                         <div>
                             <button
                                 onClick={removeTrade}
-                                disabled={auth === UserRole.Buyer}
+                                disabled={auth === UserRoleEnum.Buyer}
                             >
                                 <FontAwesomeIcon icon={faTrashAlt} color="white" />
                             </button>
@@ -106,7 +106,7 @@ function Chat({ smallScreen }: ChatProps) {
                         key={index}
                     >
                         <div className="chat__message__avatar">
-                            <Avatar url={message.sender === UserRole.Seller
+                            <Avatar url={message.sender === UserRoleEnum.Seller
                                 ? sellerAvatarUrl
                                 : trade?.buyer.avatarUrl
                             } />

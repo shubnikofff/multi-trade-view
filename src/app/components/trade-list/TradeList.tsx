@@ -2,13 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { Link } from 'react-router-dom';
-import Avatar from '../avatar';
-import NotAvailable from '../not-available';
+import Avatar from '@components/avatar';
+import NotAvailable from '@components/not-available';
 
-import { UserRole } from '../../types/user';
+import { UserRoleEnum } from '@type/User';
+
+import { PATH_CHAT } from '@app/paths';
+
 import { useTradeList } from './useTradeList';
-
-import { PATH_CHAT } from '../../paths';
 
 import './TradeList.scss';
 
@@ -21,7 +22,7 @@ function TradeList() {
         trades,
     } = useTradeList();
 
-    if (auth === UserRole.Buyer) {
+    if (auth === UserRoleEnum.Buyer) {
         return (
             <NotAvailable>
                 Not available for this user

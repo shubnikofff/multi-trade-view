@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { useAuth } from '../../hooks';
+import { useAuth } from '@hooks';
 
-import { selectors as chatSelectors, actions as chatActions } from '../../slices/chatsSlice';
-import { selectors as tradeSelectors, actions as tradeActions } from '../../slices/tradesSlice';
-import { selectors as userSelectors } from '../../slices/usersSlice';
+import { selectors as chatSelectors, actions as chatActions } from '@store/chats';
+import { selectors as tradeSelectors, actions as tradeActions } from '@store/trades';
+import { selectors as userSelectors } from '@store/users';
 
-import { Chat } from '../../types/chat';
-import { RootState } from '../../store';
-import { Trade, TradeEntity } from '../../types/trade';
-import { User } from '../../types/user';
+import { Chat } from '@type/Chat';
+import { RootState } from '@type/Store';
+import { Trade, TradeEntity } from '@type/Trade';
+import { User } from '@type/User';
 
-import { sellerAvatarUrl } from '../../initialData';
-import { PATH_ROOT } from '../../paths';
+import { PATH_ROOT } from '@app/paths';
+import { sellerAvatarUrl } from '@app/initialData';
 
 function useChat() {
     const dispatch = useDispatch();

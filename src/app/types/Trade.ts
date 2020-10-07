@@ -1,6 +1,6 @@
-import { User } from './user';
+import { User } from '@type/User';
 
-export interface TradeEntity {
+export type TradeEntity = {
     id: number;
     buyerId: number;
     chatId: number;
@@ -11,7 +11,7 @@ export interface TradeEntity {
     started: Date;
 }
 
-export interface Trade {
+export type Trade = {
     id: number;
     buyer: User;
     chatId: number;

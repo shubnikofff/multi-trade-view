@@ -65,7 +65,7 @@ exports[`Component Dashboard should match snapshot 1`] = `
               className="dashboard__start-time"
             >
               Started 
-              2020-9-1 12:00:00 AM
+              9/1/2020, 00:00:00
             </div>
             <div
               className="dashboard__action-area"

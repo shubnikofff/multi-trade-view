@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { actions } from '../slices/rateSlice';
-import { RootState } from '../store';
+import { actions } from '@store/rate';
+import { RootState } from '@type/Store';
 
 function useRate() {
     const dispatch = useDispatch();

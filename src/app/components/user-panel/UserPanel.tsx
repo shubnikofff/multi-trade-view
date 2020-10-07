@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useAuth } from '../../hooks';
+import { useAuth } from '@hooks';
 
 import './UserPanel.scss';
 

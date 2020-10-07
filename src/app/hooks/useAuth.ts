@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { actions as authActions } from '../slices/authSlice';
+import { actions } from '@store/auth';
 
-import { RootState } from '../store';
-import { UserRole } from '../types/user';
+import { RootState } from '@type/Store';
+import { UserRoleEnum } from '@type/User';
 
 function useAuth() {
     const dispatch = useDispatch();
 
-    const auth = useSelector<RootState, UserRole>(state => state.auth);
+    const auth = useSelector<RootState, UserRoleEnum>(state => state.auth);
 
-    const switchUser = () => dispatch(authActions.switchUser());
+    const switchUser = () => dispatch(actions.switchUser());
 
     return {
         auth,

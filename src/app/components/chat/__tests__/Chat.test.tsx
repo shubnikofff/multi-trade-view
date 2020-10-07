@@ -5,10 +5,10 @@ import { createMemoryHistory } from 'history'
 
 import { Provider } from 'react-redux';
 import { Router, Route } from 'react-router-dom'
-import Chat from '../Chat';
+import Chat from '@components/chat';
 
-import { store } from '../../../mockStore';
-import { PATH_CHAT } from '../../../paths';
+import { store } from '@app/mockStore';
+import { PATH_CHAT } from '@app/paths';
 
 describe('Component chat', () => {
     const history = createMemoryHistory({

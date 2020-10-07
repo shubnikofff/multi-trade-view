@@ -1,10 +1,10 @@
 import configureMockStore from 'redux-mock-store'
-import { UserRole } from './types/user';
+import { UserRoleEnum } from '@type/User';
 
 const mockStore = configureMockStore([]);
 
 const store = mockStore({
-    auth: UserRole.Seller,
+    auth: UserRoleEnum.Seller,
     trades: {
         ids: [1, 2],
         entities: {
@@ -52,12 +52,12 @@ const store = mockStore({
                 messages: [
                     {
                         message: 'Message_1',
-                        sender: UserRole.Buyer,
+                        sender: UserRoleEnum.Buyer,
                         sendTime: new Date(2020, 8),
                     },
                     {
                         message: 'Message_2',
-                        sender: UserRole.Seller,
+                        sender: UserRoleEnum.Seller,
                         sendTime: new Date(2020, 8),
                     }
                 ],
@@ -68,12 +68,12 @@ const store = mockStore({
                 messages: [
                     {
                         message: 'Message_1',
-                        sender: UserRole.Buyer,
+                        sender: UserRoleEnum.Buyer,
                         sendTime: new Date(2020, 8),
                     },
                     {
                         message: 'Message_2',
-                        sender: UserRole.Seller,
+                        sender: UserRoleEnum.Seller,
                         sendTime: new Date(2020, 8),
                     }
                 ],

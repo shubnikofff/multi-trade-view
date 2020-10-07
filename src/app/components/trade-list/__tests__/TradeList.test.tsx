@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { mount } from 'enzyme';
-import { store } from '../../../mockStore';
+import { store } from '@app/mockStore';
 
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import TradeList from '../TradeList';
+import TradeList from '@components/trade-list';
 
 describe('Component TradeList', () => {
     const wrapper = mount(

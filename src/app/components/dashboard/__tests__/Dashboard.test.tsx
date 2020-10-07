@@ -5,10 +5,10 @@ import { createMemoryHistory } from 'history'
 
 import { Provider } from 'react-redux';
 import { Router, Route } from 'react-router-dom'
-import Dashboard from '../Dashboard';
+import Dashboard from '@components/dashboard';
 
-import { store } from '../../../mockStore';
-import { PATH_DASHBOARD } from '../../../paths';
+import { store } from '@app/mockStore';
+import { PATH_DASHBOARD } from '@app/paths';
 
 describe('Component Dashboard', () => {
     const history = createMemoryHistory({

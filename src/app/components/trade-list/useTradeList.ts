@@ -1,16 +1,16 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useAuth, useRate } from '../../hooks';
+import { useAuth, useRate } from '@hooks';
 
-import { selectors as chatSelectors } from '../../slices/chatsSlice';
-import { selectors as tradeSelectors } from '../../slices/tradesSlice';
-import { selectors as userSelectors } from '../../slices/usersSlice';
+import { selectors as chatsSelectors } from '@store/chats';
+import { selectors as tradesSelectors } from '@store/trades';
+import { selectors as usersSelectors } from '@store/users';
 
-import { Chat } from '../../types/chat';
+import { Chat } from '@type/Chat';
 import { Dictionary } from '@reduxjs/toolkit';
-import { RootState } from '../../store';
-import { Trade } from '../../types/trade';
-import { User } from '../../types/user';
+import { RootState } from '@type/Store';
+import { Trade } from '@type/Trade';
+import { User } from '@type/User';
 
 function useTradeList() {
     const { auth } = useAuth();
@@ -20,8 +20,8 @@ function useTradeList() {
     const selectedTradeId = parseInt(tradeId);
 
     const trades = useSelector<RootState, Trade[]>(state => {
-        const tradeEntities = tradeSelectors.selectAll(state);
-        const userDictionary = userSelectors.selectEntities(state);
+        const tradeEntities = tradesSelectors.selectAll(state);
+        const userDictionary = usersSelectors.selectEntities(state);
 
         return tradeEntities.map(entity => ({
             ...entity,
@@ -29,7 +29,7 @@ function useTradeList() {
         }))
     });
 
-    const chatDictionary = useSelector<RootState, Dictionary<Chat>>(state => chatSelectors.selectEntities(state));
+    const chatDictionary = useSelector<RootState, Dictionary<Chat>>(state => chatsSelectors.selectEntities(state));
 
     return {
         auth,

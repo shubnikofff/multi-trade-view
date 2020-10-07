@@ -1,17 +1,17 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { useDashboard } from './useDashboard';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
-import Avatar from '../avatar';
-import NotAvailable from '../not-available';
+import Avatar from '@components/avatar';
+import NotAvailable from '@components/not-available';
 
-import { UserRole } from '../../types/user';
+import { UserRoleEnum } from '@type/User';
 
-import { PATH_CHAT } from '../../paths';
+import { PATH_CHAT } from '@app/paths';
+
+import { useDashboard } from './useDashboard';
 
 import './Dashboard.scss';
 
@@ -22,7 +22,7 @@ interface DashboardProps {
 function Dashboard({ smallScreen }: DashboardProps) {
     const { auth, convert, trade, releaseBitcoins } = useDashboard();
 
-    if (auth === UserRole.Buyer) {
+    if (auth === UserRoleEnum.Buyer) {
         return (
             <NotAvailable>
                 Not available for this user

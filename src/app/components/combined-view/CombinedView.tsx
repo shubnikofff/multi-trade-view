@@ -2,9 +2,9 @@ import React from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import Chat from '../chat';
-import Dashboard from '../dashboard';
-import TradeList from '../trade-list';
+import Chat from '@components/chat';
+import Dashboard from '@components/dashboard';
+import TradeList from '@components/trade-list';
 
 import './CombinedView.scss';
 

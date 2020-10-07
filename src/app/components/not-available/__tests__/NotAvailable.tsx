@@ -2,7 +2,7 @@ import React from 'react';
 
 import { shallow } from 'enzyme';
 
-import NotAvailable from '../NotAvailable';
+import NotAvailable from '@components/not-available';
 
 describe('Component NotAvailable', () => {
     const wrapper = shallow(

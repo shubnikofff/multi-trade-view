@@ -187,7 +187,7 @@ exports[`Component chat should match snapshot 1`] = `
                 <div
                   className="chat__message__date chat__message__date_align-right"
                 >
-                  2020-9-1 12:00:00 AM
+                  9/1/2020, 00:00:00
                 </div>
               </div>
             </div>
@@ -215,7 +215,7 @@ exports[`Component chat should match snapshot 1`] = `
                 <div
                   className="chat__message__date"
                 >
-                  2020-9-1 12:00:00 AM
+                  9/1/2020, 00:00:00
                 </div>
               </div>
             </div>

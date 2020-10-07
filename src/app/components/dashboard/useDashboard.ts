@@ -1,13 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAuth, useRate } from '../../hooks';
+import { useAuth, useRate } from '@hooks';
 
-import { actions as tradeActions, selectors as tradeSelectors } from '../../slices/tradesSlice';
-import { selectors as userSelectors } from '../../slices/usersSlice';
+import { actions as tradeActions, selectors as tradeSelectors } from '@store/trades';
+import { selectors as userSelectors } from '@store/users';
 
-import { RootState } from '../../store';
-import { Trade } from '../../types/trade';
-import { User } from '../../types/user';
+import { RootState } from '@type/Store';
+import { Trade } from '@type/Trade';
+import { User } from '@type/User';
 
 function useDashboard() {
     const { auth } = useAuth();

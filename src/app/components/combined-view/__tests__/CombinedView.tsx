@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { mount } from 'enzyme';
-import { store } from '../../../mockStore';
+import { store } from '@app/mockStore';
 
 import CombinedView from '../CombinedView';
 import { BrowserRouter } from 'react-router-dom';
