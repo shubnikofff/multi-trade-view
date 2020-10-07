@@ -1,9 +1,8 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
-import { RootState } from '../store';
-import { TradeEntity } from '../types/trade';
+import { TradeEntity } from '@type/Trade';
 
-import { trades } from '../initialData';
+import { trades } from '@app/initialData';
 
 const tradeAdapter = createEntityAdapter<TradeEntity>();
 
@@ -18,12 +17,4 @@ const slice = createSlice({
     }
 });
 
-const { actions, reducer } = slice;
-
-const selectors = tradeAdapter.getSelectors<RootState>(state => state.trades);
-
-export {
-    actions,
-    reducer,
-    selectors,
-}
+export default slice;

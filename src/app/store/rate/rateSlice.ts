@@ -6,11 +6,6 @@ const slice = createSlice({
     reducers: {
         setRate: (state, { payload }: PayloadAction<number>) => payload,
     }
-})
+});
 
-const { actions, reducer } = slice;
-
-export {
-    actions,
-    reducer,
-}
+export default slice;

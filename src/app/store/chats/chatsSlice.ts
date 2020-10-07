@@ -1,9 +1,7 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { chats } from '@app/initialData'
 
-import { RootState } from '../store';
-import { Chat } from '../types/chat';
-
-import { chats } from '../initialData';
+import { Chat } from '@type/Chat';
 
 const chatAdapter = createEntityAdapter<Chat>();
 
@@ -18,12 +16,4 @@ const slice = createSlice({
     }
 });
 
-const { actions, reducer } = slice;
-
-const selectors = chatAdapter.getSelectors<RootState>(state => state.chats);
-
-export {
-    actions,
-    reducer,
-    selectors,
-}
+export default slice;

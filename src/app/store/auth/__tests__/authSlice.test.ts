@@ -1,6 +1,6 @@
-import { actions, reducer } from '../authSlice';
+import { actions, reducer } from '@store/auth';
 
-import { UserRole } from '../../types/user';
+import { UserRoleEnum } from '@type/User';
 
 describe('authSlice', () => {
     describe('actions', () => {
@@ -14,11 +14,11 @@ describe('authSlice', () => {
 
     describe('reducer', () => {
         it('should return initial state', () => {
-            expect(reducer(undefined, { type: undefined })).toEqual(UserRole.Seller);
+            expect(reducer(undefined, { type: undefined })).toEqual(UserRoleEnum.Seller);
         });
 
         it('should handle switchUser action', () => {
-            expect(reducer(UserRole.Seller, actions.switchUser)).toEqual(UserRole.Buyer);
+            expect(reducer(UserRoleEnum.Seller, actions.switchUser)).toEqual(UserRoleEnum.Buyer);
         });
     });
 });

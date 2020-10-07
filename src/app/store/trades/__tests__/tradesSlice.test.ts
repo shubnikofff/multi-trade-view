@@ -1,6 +1,6 @@
-import { actions, reducer } from '../tradesSlice';
+import { actions, reducer } from '@store/trades';
 
-import { trades } from '../../initialData';
+import { trades } from '@app/initialData';
 
 describe('tradesSlice', () => {
     const trade = trades[0];

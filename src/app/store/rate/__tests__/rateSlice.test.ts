@@ -1,4 +1,4 @@
-import { actions, reducer } from '../rateSlice';
+import { actions, reducer } from '@store/rate';
 
 describe('rateSlice', () => {
     const payload = 11000;

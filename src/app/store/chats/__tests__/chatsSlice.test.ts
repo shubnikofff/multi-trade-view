@@ -1,8 +1,8 @@
-import { actions, reducer } from '../chatsSlice';
+import { actions, reducer } from '@store/chats';
 
-import { chats } from '../../initialData';
+import { chats } from '@app/initialData';
 
-describe('chatSlice', () => {
+describe('chatsSlice', () => {
     const chat = chats[0];
 
     describe('actions', () => {

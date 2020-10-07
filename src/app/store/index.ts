@@ -4,15 +4,15 @@ import {
     isPlain,
 } from '@reduxjs/toolkit';
 
-import { reducer as authReducer } from './slices/authSlice';
-import { reducer as chatsReducer } from './slices/chatsSlice';
-import { reducer as rateReducer } from './slices/rateSlice';
-import { reducer as tradesReducer } from './slices/tradesSlice';
-import { reducer as usersReducer } from './slices/usersSlice';
+import { reducer as authReducer } from './auth';
+import { reducer as chatsReducer } from './chats';
+import { reducer as rateReducer } from './rate';
+import { reducer as tradesReducer } from './trades';
+import { reducer as usersReducer } from './users';
 
 const serializableMiddleware = createSerializableStateInvariantMiddleware({
     isSerializable: value => isPlain(value) || value instanceof Date,
-})
+});
 
 const store = configureStore({
     reducer: {
@@ -24,7 +24,5 @@ const store = configureStore({
     },
     middleware: [serializableMiddleware],
 });
-
-export type RootState = ReturnType<typeof store.getState>
 
 export default store;

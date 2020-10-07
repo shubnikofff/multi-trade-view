@@ -1,9 +1,8 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
-import { RootState } from '../store';
-import { User } from '../types/user';
+import { User } from '@type/User';
 
-import { users } from '../initialData';
+import { users } from '@app/initialData';
 
 const userAdapter = createEntityAdapter<User>();
 
@@ -15,11 +14,4 @@ const slice = createSlice({
     reducers: {}
 });
 
-const { reducer } = slice;
-
-const selectors = userAdapter.getSelectors<RootState>(state => state.users);
-
-export {
-    reducer,
-    selectors,
-}
+export default slice;
