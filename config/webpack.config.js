@@ -290,8 +290,8 @@ module.exports = function(webpackEnv) {
 				.filter(ext => useTypeScript || !ext.includes('ts')),
 			alias: {
 				'@app': path.resolve(__dirname, '../src/app/'),
+				'@common': path.resolve(__dirname, '../src/app/common/'),
 				'@components': path.resolve(__dirname, '../src/app/components/'),
-				'@hooks': path.resolve(__dirname, '../src/app/hooks/'),
 				'@slices': path.resolve(__dirname, '../src/app/slices/'),
 				'@store': path.resolve(__dirname, '../src/app/store/'),
 				'@type': path.resolve(__dirname, '../src/app/types/'),

@@ -21,8 +21,8 @@
     "baseUrl": "src",
     "paths": {
       "@app/*": ["app/*"],
+      "@common/*": ["app/common/*"],
       "@components/*": ["app/components/*"],
-      "@hooks": ["app/hooks"],
       "@slices": ["app/slices"],
       "@store/*": ["app/store/*"],
       "@type/*": ["app/types/*"]
