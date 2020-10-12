@@ -1,19 +1,23 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { initApp } from '@common/actions';
 
 import { TradeEntity } from '@type/Trade';
-
-import { trades } from '@app/initialData';
+import { InitialData } from '@type/Store';
 
 const tradeAdapter = createEntityAdapter<TradeEntity>();
 
-const initialState = tradeAdapter.setAll(tradeAdapter.getInitialState(), trades);
-
 const slice = createSlice({
     name: 'trades',
-    initialState,
+    initialState: tradeAdapter.getInitialState(),
     reducers: {
         updateTrade: tradeAdapter.updateOne,
         removeTrade: tradeAdapter.removeOne
+    },
+    extraReducers: {
+        [initApp.type]: (state, { payload }: PayloadAction<InitialData>) => {
+            tradeAdapter.setAll(state, payload.trades);
+        },
     }
 });
 

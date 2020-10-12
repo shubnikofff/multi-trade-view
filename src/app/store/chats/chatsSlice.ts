@@ -1,18 +1,23 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { chats } from '@app/initialData'
+import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { initApp } from '@common/actions';
 
 import { Chat } from '@type/Chat';
+import { InitialData } from '@type/Store';
 
 const chatAdapter = createEntityAdapter<Chat>();
 
-const initialState = chatAdapter.setAll(chatAdapter.getInitialState(), chats);
-
 const slice = createSlice({
     name: 'chats',
-    initialState,
+    initialState: chatAdapter.getInitialState(),
     reducers: {
         updateChat: chatAdapter.updateOne,
         removeChat: chatAdapter.removeOne,
+    },
+    extraReducers: {
+        [initApp.type]: (state, { payload }: PayloadAction<InitialData>) => {
+            chatAdapter.setAll(state, payload.chats);
+        },
     }
 });
 
