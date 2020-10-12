@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useRate } from '@hooks';
+import { useRate } from '@common/hooks';
 
 const API_URL = 'https://api.coindesk.com/v1/bpi/currentprice/USD.json';
 const SET_RATE_TIMEOUT_MS = 10000;

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { useAuth } from '@hooks';
+import { useAuth } from '@common/hooks';
 
 import { selectors as chatSelectors, actions as chatActions } from '@store/chats';
 import { selectors as tradeSelectors, actions as tradeActions } from '@store/trades';

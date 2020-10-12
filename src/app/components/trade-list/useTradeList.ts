@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useAuth, useRate } from '@hooks';
+import { useAuth, useRate } from '@common/hooks';
 
 import { selectors as chatsSelectors } from '@store/chats';
 import { selectors as tradesSelectors } from '@store/trades';
