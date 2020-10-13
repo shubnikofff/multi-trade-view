@@ -1,0 +1,44 @@
+@import "../../variables";
+
+$incoming-message-color: #5c7394;
+
+.message {
+  display: flex;
+  padding: $gutter;
+
+  &__avatar {
+    padding: $gutter;
+  }
+
+  &__text {
+    padding: $gutter;
+    border-radius: $border-radius;
+    border: 1px solid $color-border;
+    font-size: 0.9*$font-size;
+
+    &_incoming {
+      background-color: $incoming-message-color;
+      color: $color-bg-white;
+      margin-left: 4*$gutter;
+    }
+
+    &_outgoing {
+      background-color: $color-bg-white;
+      margin-right: 4*$gutter;
+    }
+  }
+
+  &__date {
+    padding-top: $gutter / 2;
+    color: $color-text-gray;
+    font-size: 0.8*$font-size;
+
+    &_align-right {
+      text-align: right;
+    }
+  }
+}
+
+.message_reversed {
+  flex-direction: row-reverse;
+}

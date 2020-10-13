@@ -3,8 +3,8 @@ import { useCallback, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useAuth } from '@common/hooks';
 
-import { selectors as chatSelectors, actions as chatActions } from '@store/chats';
-import { selectors as tradeSelectors, actions as tradeActions } from '@store/trades';
+import { selectors as chatsSelectors, actions as chatActions } from '@store/chats';
+import { selectors as tradesSelectors, actions as tradeActions } from '@store/trades';
 import { selectors as userSelectors } from '@store/users';
 
 import { Chat } from '@type/Chat';
@@ -22,14 +22,14 @@ function useChat() {
 
     const { chat, trade, tradeEntity } = useSelector<RootState, { trade?: Trade, chat?: Chat, tradeEntity?: TradeEntity }>(
         state => {
-            const tradeEntity = tradeSelectors.selectById(state, tradeId);
+            const tradeEntity = tradesSelectors.selectById(state, tradeId);
 
             if (!tradeEntity) {
                 return {};
             }
 
             const buyer = userSelectors.selectById(state, tradeEntity.buyerId) as User;
-            const chat = chatSelectors.selectById(state, tradeEntity.chatId);
+            const chat = chatsSelectors.selectById(state, tradeEntity.chatId);
             const trade = { ...tradeEntity, buyer }
 
             return {
@@ -51,19 +51,19 @@ function useChat() {
 
     const sendMessage = useCallback((text: string) => {
         if (chat) {
-            dispatch(chatActions.updateChat({
-                id: chat.id,
-                changes: {
-                    messages: [
-                        ...chat.messages,
-                        {
-                            sender: auth,
-                            sendTime: new Date(),
-                            text,
-                        }
-                    ],
-                },
-            }));
+            // dispatch(chatActions.updateChat({
+            //     id: chat.id,
+            //     changes: {
+            //         messages: [
+            //             ...chat.messages,
+            //             {
+            //                 sender: auth,
+            //                 sendTime: new Date(),
+            //                 text,
+            //             }
+            //         ],
+            //     },
+            // }));
         }
     }, [dispatch, chat, auth]);
 

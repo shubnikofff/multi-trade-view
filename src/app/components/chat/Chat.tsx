@@ -1,15 +1,13 @@
 import React, { useRef } from 'react';
-import classNames from 'classnames';
 
-import Avatar from '@components/avatar';
 import NotAvailable from '@components/not-available';
+import Message from '@components/message';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Formik, Form, Field, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
 
 import { faTrashAlt, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { PATH_DASHBOARD, PATH_ROOT } from '@app/paths';
-import { sellerAvatarUrl } from '@app/initialData';
 
 import { UserRoleEnum } from '@type/User';
 
@@ -98,33 +96,8 @@ function Chat({ smallScreen }: ChatProps) {
                 </div>
             </div>
             <div className="chat__body">
-                {chat && chat.messages.map((message, index) => (
-                    <div
-                        className={classNames('chat__message', {
-                            'chat__message_reversed': message.sender !== auth,
-                        })}
-                        key={index}
-                    >
-                        <div className="chat__message__avatar">
-                            <Avatar url={message.sender === UserRoleEnum.Seller
-                                ? sellerAvatarUrl
-                                : trade?.buyer.avatarUrl
-                            } />
-                        </div>
-                        <div>
-                            <div className={classNames('chat__message__text', message.sender === auth
-                                ? 'chat__message__text_outgoing'
-                                : 'chat__message__text_incoming'
-                            )}>
-                                {message.text}
-                            </div>
-                            <div className={classNames('chat__message__date', {
-                                'chat__message__date_align-right': message.sender !== auth,
-                            })}>
-                                {message.sendTime.toLocaleString()}
-                            </div>
-                        </div>
-                    </div>
+                {chat && chat.messages.map((id) => (
+                    <Message id={id} key={id} />
                 ))}
                 <div ref={chatBodyBottom} />
             </div>
