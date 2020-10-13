@@ -1,8 +1,8 @@
 import faker from 'faker';
 
-import { Chat } from '@type/Chat';
 import { TradeEntity } from '@type/Trade';
 import { User, UserRoleEnum } from '@type/User';
+import { ChatInitialData } from '@type/Store';
 
 const USERS_NUMBER = 3;
 const TRADES_NUMBER = 4;
@@ -27,14 +27,15 @@ const trades: TradeEntity[] = Array.from({ length: TRADES_NUMBER }, (_, index: n
     started: faker.date.recent(7),
 }));
 
-const chats: Chat[] = Array.from({ length: TRADES_NUMBER }, (_, index: number) => ({
-    id: index + 1,
+const chats: ChatInitialData[] = Array.from({ length: TRADES_NUMBER }, (_, chatIndex: number) => ({
+    id: chatIndex + 1,
     hasUnreadMessages: faker.random.boolean(),
-    messages: Array.from({ length: faker.random.number({ min: 1, max: MESSAGES_MAX_NUMBER }) }, () => ({
+    messages: Array.from({ length: faker.random.number({ min: 1, max: MESSAGES_MAX_NUMBER }) }, (_, messageIndex) => ({
+        id: chatIndex * MESSAGES_MAX_NUMBER + messageIndex + 1,
         sender: faker.random.arrayElement([UserRoleEnum.Seller, UserRoleEnum.Buyer]),
-        sendTime: faker.date.between(trades[index].started, new Date()),
+        sendTime: faker.date.between(trades[chatIndex].started, new Date()),
         text: faker.lorem.text(),
-    })).sort((a, b) => a.sendTime.valueOf() - b.sendTime.valueOf()),
+    })), //.sort((a, b) => a.sendTime.valueOf() - b.sendTime.valueOf()),
 }));
 
 const sellerAvatarUrl = 'https://s3.amazonaws.com/uifaces/faces/twitter/ssbb_me/128.jpg';

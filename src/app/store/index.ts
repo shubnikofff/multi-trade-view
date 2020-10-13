@@ -6,6 +6,7 @@ import {
 
 import { reducer as authReducer } from './auth';
 import { reducer as chatsReducer } from './chats';
+import { reducer as messagesReducer } from './messages';
 import { reducer as rateReducer } from './rate';
 import { reducer as tradesReducer } from './trades';
 import { reducer as usersReducer } from './users';
@@ -18,6 +19,7 @@ const store = configureStore({
     reducer: {
         auth: authReducer,
         chats: chatsReducer,
+        messages: messagesReducer,
         rate: rateReducer,
         trades: tradesReducer,
         users: usersReducer,

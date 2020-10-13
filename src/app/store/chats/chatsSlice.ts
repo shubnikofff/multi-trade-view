@@ -5,18 +5,21 @@ import { initApp } from '@common/actions';
 import { Chat } from '@type/Chat';
 import { InitialData } from '@type/Store';
 
-const chatAdapter = createEntityAdapter<Chat>();
+const chatEntityAdapter = createEntityAdapter<Chat>();
 
 const slice = createSlice({
     name: 'chats',
-    initialState: chatAdapter.getInitialState(),
+    initialState: chatEntityAdapter.getInitialState(),
     reducers: {
-        updateChat: chatAdapter.updateOne,
-        removeChat: chatAdapter.removeOne,
+        updateChat: chatEntityAdapter.updateOne,
+        removeChat: chatEntityAdapter.removeOne,
     },
     extraReducers: {
         [initApp.type]: (state, { payload }: PayloadAction<InitialData>) => {
-            chatAdapter.setAll(state, payload.chats);
+            chatEntityAdapter.setAll(state, payload.chats.map(chat => ({
+                ...chat,
+                messages: chat.messages.map(message => message.id)
+            })));
         },
     }
 });

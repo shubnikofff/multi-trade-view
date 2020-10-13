@@ -4,7 +4,7 @@ import { initApp } from '@common/actions';
 import { InitialData } from '@type/Store';
 
 const messageEntityAdapter = createEntityAdapter<Message>({
-    sortComparer: (a, b) => a.sendTime.valueOf() - b.sendTime.valueOf(),
+    sortComparer: (a, b) => b.sendTime.valueOf() - a.sendTime.valueOf(),
 });
 
 const slice = createSlice({
