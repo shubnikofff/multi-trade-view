@@ -39,8 +39,11 @@ const chats: Chat[] = Array.from({ length: TRADES_NUMBER }, (_, index: number) =
 
 const sellerAvatarUrl = 'https://s3.amazonaws.com/uifaces/faces/twitter/ssbb_me/128.jpg';
 
+const rate = 10000;
+
 export {
     chats,
+    rate,
     sellerAvatarUrl,
     trades,
     users,

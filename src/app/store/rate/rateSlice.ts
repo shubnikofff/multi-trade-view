@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { rate } from "@app/initialData";
 
 const slice = createSlice({
     name: 'rate',
-    initialState: 10000,
+    initialState: rate,
     reducers: {
         setRate: (state, { payload }: PayloadAction<number>) => payload,
     }
