@@ -23,7 +23,6 @@
       "@app/*": ["app/*"],
       "@common/*": ["app/common/*"],
       "@components/*": ["app/components/*"],
-      "@slices": ["app/slices"],
       "@store/*": ["app/store/*"],
       "@type/*": ["app/types/*"]
     }
