@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuth, useRate } from '@common/hooks';
@@ -27,12 +28,12 @@ function useDashboard() {
         return { ...entity, buyer }
     });
 
-    const releaseBitcoins = () => {
+    const releaseBitcoins = useCallback(() => {
         dispatch(tradeActions.updateTrade({
             id: tradeId,
             changes: { paid: true },
         }));
-    }
+    }, [dispatch, tradeId]);
 
     return {
         auth,

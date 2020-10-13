@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useAuth } from '@common/hooks';
 
@@ -49,7 +49,7 @@ function useChat() {
         }
     }, [chat, dispatch]);
 
-    const sendMessage = (text: string) => {
+    const sendMessage = useCallback((text: string) => {
         if (chat) {
             dispatch(chatActions.updateChat({
                 id: chat.id,
@@ -65,15 +65,15 @@ function useChat() {
                 },
             }));
         }
-    };
+    }, [dispatch, chat, auth]);
 
-    const removeTrade = () => {
+    const removeTrade = useCallback(() => {
         if (tradeEntity) {
             dispatch(tradeActions.removeTrade(tradeEntity.id));
             dispatch(chatActions.removeChat(tradeEntity.chatId));
             history.push(PATH_ROOT);
         }
-    };
+    }, [dispatch, tradeEntity, history]);
 
     return {
         auth,

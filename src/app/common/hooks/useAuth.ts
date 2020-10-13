@@ -1,3 +1,4 @@
+import {useCallback} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 
 import { actions } from '@store/auth';
@@ -10,7 +11,7 @@ function useAuth() {
 
     const auth = useSelector<RootState, UserRoleEnum>(state => state.auth);
 
-    const switchUser = () => dispatch(actions.switchUser());
+    const switchUser = useCallback(() => dispatch(actions.switchUser()), [dispatch]);
 
     return {
         auth,
