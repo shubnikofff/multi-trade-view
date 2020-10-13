@@ -13,7 +13,6 @@ import { Trade, TradeEntity } from '@type/Trade';
 import { User } from '@type/User';
 
 import { PATH_ROOT } from '@app/paths';
-import { sellerAvatarUrl } from '@app/initialData';
 
 function useChat() {
     const dispatch = useDispatch();
@@ -80,7 +79,6 @@ function useChat() {
         auth,
         chat,
         removeTrade,
-        sellerAvatarUrl,
         sendMessage,
         trade,
     }

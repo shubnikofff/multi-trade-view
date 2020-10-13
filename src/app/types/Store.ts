@@ -6,6 +6,7 @@ import { User } from '@type/User';
 
 export type InitialData = {
     chats: Chat[],
+    rate: number,
     sellerAvatarUrl: string,
     trades: TradeEntity[],
     users: User[],

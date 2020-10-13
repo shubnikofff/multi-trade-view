@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 import { faTrashAlt, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { PATH_DASHBOARD, PATH_ROOT } from '@app/paths';
+import { sellerAvatarUrl } from '@app/initialData';
 
 import { UserRoleEnum } from '@type/User';
 
@@ -39,7 +40,6 @@ function Chat({ smallScreen }: ChatProps) {
         auth,
         chat,
         removeTrade,
-        sellerAvatarUrl,
         sendMessage,
         trade,
     } = useChat();
