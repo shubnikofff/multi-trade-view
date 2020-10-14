@@ -17,12 +17,10 @@ const slice = createSlice({
     reducers: {
         updateTrade: tradeAdapter.updateOne,
         removeTrade: tradeAdapter.removeOne,
-        setRate(state, { payload }: PayloadAction<number>) {
-            return {
-                ...state,
-                rate: payload,
-            }
-        },
+        setRate: (state, { payload }: PayloadAction<number>) => ({
+            ...state,
+            rate: payload,
+        }),
     },
     extraReducers: {
         [initApp.type]: (state, { payload }: PayloadAction<InitialData>) => {

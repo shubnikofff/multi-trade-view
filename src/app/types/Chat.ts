@@ -2,9 +2,10 @@ import { UserRoleEnum } from '@type/User';
 
 export type Message = {
     id: number;
+    sender: UserRoleEnum;
+    senderId: number;
     sendTime: Date;
     text: string;
-    sender: UserRoleEnum;
 }
 
 export type Chat = {

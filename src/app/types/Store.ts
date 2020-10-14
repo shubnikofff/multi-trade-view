@@ -6,6 +6,7 @@ import { User, UserRoleEnum } from '@type/User';
 type MessageInitialData = {
     id: number;
     sender: UserRoleEnum;
+    senderId: number,
     sendTime: Date;
     text: string;
 }
@@ -17,10 +18,11 @@ export type ChatInitialData = {
 }
 
 export type InitialData = {
-    chats: ChatInitialData[],
-    rate: number,
-    trades: TradeEntity[],
-    users: User[],
+    chats: ChatInitialData[];
+    currentUserId: number;
+    rate: number;
+    trades: TradeEntity[];
+    users: User[];
 }
 
 export type RootState = ReturnType<typeof store.getState>;

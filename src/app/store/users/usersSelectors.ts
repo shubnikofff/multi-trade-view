@@ -5,4 +5,9 @@ import { User } from '@type/User';
 
 const userAdapter = createEntityAdapter<User>();
 
-export default userAdapter.getSelectors<RootState>(state => state.users);
+const selectCurrentUserId = (state: RootState) => state.users.currentUserId;
+
+export default {
+    ...userAdapter.getSelectors<RootState>(state => state.users),
+    selectCurrentUserId,
+};
