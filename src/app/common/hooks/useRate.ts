@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from "react";
 
-import { actions } from '@store/rate';
+import { actions, selectors } from '@store/trades';
 import { RootState } from '@type/Store';
 
-function useRate() {
+export function useRate() {
     const dispatch = useDispatch();
 
-    const rate = useSelector<RootState, number>(state => state.rate);
+    const rate = useSelector<RootState, number>(selectors.selectRate);
 
     const setRate = useCallback((rate: number) => dispatch(actions.setRate(rate)), [dispatch]);
 
@@ -18,5 +18,3 @@ function useRate() {
         convert,
     }
 }
-
-export { useRate }

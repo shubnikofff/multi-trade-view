@@ -5,4 +5,9 @@ import { TradeEntity } from '@type/Trade';
 
 const tradeAdapter = createEntityAdapter<TradeEntity>();
 
-export default tradeAdapter.getSelectors<RootState>(state => state.trades);
+const selectRate = (state: RootState) => state.trades.rate;
+
+export default {
+    ...tradeAdapter.getSelectors<RootState>(state => state.trades),
+    selectRate,
+};

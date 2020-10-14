@@ -5,14 +5,24 @@ import { initApp } from '@common/actions';
 import { TradeEntity } from '@type/Trade';
 import { InitialData } from '@type/Store';
 
+import { rate as initialRate } from '@app/initialData';
+
 const tradeAdapter = createEntityAdapter<TradeEntity>();
 
 const slice = createSlice({
     name: 'trades',
-    initialState: tradeAdapter.getInitialState(),
+    initialState: tradeAdapter.getInitialState({
+        rate: initialRate,
+    }),
     reducers: {
         updateTrade: tradeAdapter.updateOne,
-        removeTrade: tradeAdapter.removeOne
+        removeTrade: tradeAdapter.removeOne,
+        setRate(state, { payload }: PayloadAction<number>) {
+            return {
+                ...state,
+                rate: payload,
+            }
+        },
     },
     extraReducers: {
         [initApp.type]: (state, { payload }: PayloadAction<InitialData>) => {

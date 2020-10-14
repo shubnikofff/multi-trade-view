@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useRate } from '@common/hooks';
 import { initApp } from '@common/actions';
+
 import * as initialData from '@app/initialData';
 
 const API_URL = 'https://api.coindesk.com/v1/bpi/currentprice/USD.json';
