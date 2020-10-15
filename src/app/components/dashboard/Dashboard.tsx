@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 import Avatar from '@components/avatar';
 import NotAvailable from '@components/not-available';
 
-import { UserRoleEnum } from '@type/User';
-
 import { PATH_CHAT } from '@app/paths';
 
 import { useDashboard } from './useDashboard';
@@ -21,14 +19,14 @@ interface DashboardProps {
 
 function Dashboard({ smallScreen }: DashboardProps) {
     const {
-        auth,
+        currentUserId,
         buyer,
         convert,
         trade,
         releaseBitcoins,
     } = useDashboard();
 
-    if (auth === UserRoleEnum.Buyer) {
+    if (currentUserId !== trade?.sellerId) {
         return (
             <NotAvailable>
                 Not available for this user

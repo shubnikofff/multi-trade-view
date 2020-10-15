@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import Avatar from '@components/avatar';
 import { useMessage } from '@components/message/useMessage';
-import { currentUserId } from '@app/initialData';
 
 import './Message.scss';
 
@@ -11,7 +10,7 @@ type MessageProps = {
 }
 
 function Message({ id }: MessageProps) {
-    const { sender, message } = useMessage(id);
+    const { sender, message, currentUserId } = useMessage(id);
 
     return message ? (
         <div

@@ -11,7 +11,7 @@ import { Trade } from '@type/Trade';
 import { User } from '@type/User';
 
 function useDashboard() {
-    const { auth } = useAuth();
+    const { currentUserId } = useAuth();
     const { convert } = useRate();
     const { tradeId } = useParams();
     const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function useDashboard() {
     }, [dispatch, tradeId]);
 
     return {
-        auth,
+        currentUserId,
         buyer,
         convert,
         trade,

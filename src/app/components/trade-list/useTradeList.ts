@@ -1,30 +1,23 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useAuth } from '@common/hooks';
 
 import { selectors as tradesSelectors } from '@store/trades';
-import { selectors as usersSelectors } from '@store/users';
 
 import { RootState } from '@type/Store';
 import { Trade } from '@type/Trade';
-import { User } from '@type/User';
+import { useAuth } from '@common/hooks';
 
 export function useTradeList() {
-    const { auth } = useAuth();
     const { tradeId } = useParams();
+    const { currentUserId } = useAuth();
 
-    const trades = useSelector<RootState, Trade[]>(state => {
-        const tradeEntities = tradesSelectors.selectAll(state);
-        const userDictionary = usersSelectors.selectEntities(state);
+    const trades = useSelector(tradesSelectors.selectAll);
+    const currentTrade = useSelector<RootState, Trade | undefined>((state => tradesSelectors.selectById(state, tradeId)))
 
-        return tradeEntities.map(entity => ({
-            ...entity,
-            buyer: userDictionary[entity.buyerId] as User,
-        }))
-    });
+    const isAvailable = tradeId === undefined || currentUserId === currentTrade?.sellerId;
 
     return {
-        auth,
+        isAvailable,
         selectedTradeId: tradeId,
         trades,
     };

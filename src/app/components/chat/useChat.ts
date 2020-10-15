@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useAuth } from '@common/hooks';
 
 import { selectors as tradesSelectors, actions as tradesActions } from '@store/trades';
-import { selectors as usersSelectors } from '@store/users';
+import { selectors as usersSelectors, actions as usersActions } from '@store/users';
 import { selectors as messagesSelectors, actions as messagesActions } from '@store/messages';
 
 import { RootState } from '@type/Store';
@@ -16,12 +16,11 @@ import { PATH_ROOT } from '@app/paths';
 function useChat() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { auth } = useAuth();
+    const { currentUserId } = useAuth();
     const { tradeId } = useParams();
 
     const trade = useSelector<RootState, Trade | undefined>(state => tradesSelectors.selectById(state, tradeId));
     const buyer = useSelector<RootState, User | undefined>(state => usersSelectors.selectById(state, trade?.buyerId || NaN));
-    const currentUserId = useSelector<RootState, number>(state => usersSelectors.selectCurrentUserId(state));
     const messagesCount = useSelector<RootState, number>(state => messagesSelectors.selectTotal(state));
 
     // useEffect(() => {
@@ -32,7 +31,7 @@ function useChat() {
     //         }));
     //     }
     // }, [chat, dispatch]);
-    //
+
     const sendMessage = useCallback((text: string) => {
         const messageId = messagesCount + 1;
 
@@ -51,6 +50,10 @@ function useChat() {
         }));
     }, [currentUserId, dispatch, messagesCount, trade]);
 
+    const swapUsers = useCallback(() => {
+        dispatch(usersActions.setCurrentUserId(currentUserId === trade?.sellerId ? trade.buyerId : trade?.sellerId || NaN))
+    }, [currentUserId, dispatch, trade]);
+
     const removeTrade = useCallback(() => {
         if (trade) {
             dispatch(tradesActions.removeTrade(trade.hash));
@@ -59,10 +62,11 @@ function useChat() {
     }, [dispatch, trade, history]);
 
     return {
-        auth,
         buyer,
+        currentUserId,
         removeTrade,
         sendMessage,
+        swapUsers,
         trade,
     }
 }

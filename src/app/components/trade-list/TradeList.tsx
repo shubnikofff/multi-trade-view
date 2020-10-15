@@ -3,8 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NotAvailable from '@components/not-available';
 
-import { UserRoleEnum } from '@type/User';
-
 import { PATH_CHAT } from '@app/paths';
 
 import { useTradeList } from './useTradeList';
@@ -15,12 +13,12 @@ import './TradeList.scss';
 
 function TradeList() {
     const {
-        auth,
+        isAvailable,
         selectedTradeId,
         trades,
     } = useTradeList();
 
-    if (auth === UserRoleEnum.Buyer) {
+    if (!isAvailable) {
         return (
             <NotAvailable>
                 Not available for this user

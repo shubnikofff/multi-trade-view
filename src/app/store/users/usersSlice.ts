@@ -13,7 +13,7 @@ const slice = createSlice({
     name: 'users',
     initialState: userAdapter.getInitialState({ currentUserId }),
     reducers: {
-        setCurrentUser: (state, { payload }: PayloadAction<number>) => ({
+        setCurrentUserId: (state, { payload }: PayloadAction<number>) => ({
             ...state,
             currentUserId: payload,
         })

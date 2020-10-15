@@ -15,7 +15,6 @@ import {
     CombinedView,
     Dashboard,
     TradeList,
-    UserPanel,
 } from './components';
 
 import {
@@ -33,9 +32,6 @@ function App() {
 
     return (
         <div className="app">
-            <div className="app__header">
-                <UserPanel />
-            </div>
             <div className="app__content">
                 <Router>
                     <Media query={MEDIA_QUERY_SMALL_SCREEN}>

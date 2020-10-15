@@ -8,7 +8,7 @@ describe('tradesSlice', () => {
     describe('actions', () => {
         it('should create action updateTrade', () => {
             const payload = {
-                id: trade.id,
+                id: trade.hash,
                 changes: { paid: true }
             };
 
@@ -19,7 +19,7 @@ describe('tradesSlice', () => {
         });
 
         it('should create action removeTrade', () => {
-            const payload = trade.id;
+            const payload = trade.hash;
 
             expect(actions.removeTrade(payload)).toEqual({
                 payload,
@@ -29,15 +29,15 @@ describe('tradesSlice', () => {
     });
 
     describe('reducer', () => {
-        const initialState = { ids: [trade.id], entities: { [trade.id]: trade } };
+        const initialState = { ids: [trade.hash], entities: { [trade.hash]: trade } };
 
         it('should handle updateTrade action', () => {
-            const actionPayload = { id: trade.id, changes: { paid: true } };
+            const actionPayload = { id: trade.hash, changes: { paid: true } };
 
             expect(reducer(initialState, actions.updateTrade(actionPayload))).toEqual({
                 ...initialState,
                 entities: {
-                    [trade.id]: {
+                    [trade.hash]: {
                         ...trade,
                         paid: true,
                     },
@@ -46,7 +46,7 @@ describe('tradesSlice', () => {
         });
 
         it('should handle removeTrade action', () => {
-            expect(reducer(initialState, actions.removeTrade(trade.id))).toEqual({
+            expect(reducer(initialState, actions.removeTrade(trade.hash))).toEqual({
                 ids: [],
                 entities: {},
             });

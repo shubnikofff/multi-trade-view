@@ -16,7 +16,6 @@
 
     &__left-area {
       display: flex;
-      position: relative;
 
       &_back-link {
         padding-right: $gutter;
@@ -27,8 +26,6 @@
         background-color: $color-text-gray;
         padding: 8px 10px;
         border: 0;
-        position: absolute;
-        left: $gutter ;
       }
     }
 
@@ -44,6 +41,21 @@
       &__buyer {
         padding-top: 0.5*$gutter;
         font-size: 0.9*$font-size;
+      }
+    }
+
+    &__right-area {
+      display: flex;
+
+      &_dashboard-link {
+        padding-left: $gutter;
+      }
+
+      button {
+        border-radius: 50%;
+        background-color: $color-text-green;
+        padding: 8px 10px;
+        border: 0;
       }
     }
   }

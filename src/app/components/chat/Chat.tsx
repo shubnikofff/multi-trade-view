@@ -6,10 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Formik, Form, Field, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
 
-import { faTrashAlt, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faChevronLeft, faChevronRight, faSync } from '@fortawesome/free-solid-svg-icons'
 import { PATH_DASHBOARD, PATH_ROOT } from '@app/paths';
-
-import { UserRoleEnum } from '@type/User';
 
 import { useChat } from './useChat';
 
@@ -35,10 +33,11 @@ function validate({ message }: FormValues) {
 
 function Chat({ smallScreen }: ChatProps) {
     const {
-        auth,
         buyer,
+        currentUserId,
         removeTrade,
         sendMessage,
+        swapUsers,
         trade,
     } = useChat();
 
@@ -61,21 +60,19 @@ function Chat({ smallScreen }: ChatProps) {
     return (
         <div className="chat">
             <div className="chat__header">
-                <div>
-                    <div className="chat__header__left-area">
-                        {smallScreen && <div className="chat__header__left-area_back-link">
-							<Link to={`${PATH_ROOT}`}>
-								<FontAwesomeIcon icon={faChevronLeft} color="black" />
-							</Link>
-						</div>}
-                        <div>
-                            <button
-                                onClick={removeTrade}
-                                disabled={auth === UserRoleEnum.Buyer}
-                            >
-                                <FontAwesomeIcon icon={faTrashAlt} color="white" />
-                            </button>
-                        </div>
+                <div className="chat__header__left-area">
+                    {smallScreen && <div className="chat__header__left-area_back-link">
+						<Link to={`${PATH_ROOT}`}>
+							<FontAwesomeIcon icon={faChevronLeft} color="black" />
+						</Link>
+					</div>}
+                    <div>
+                        <button
+                            onClick={removeTrade}
+                            disabled={currentUserId === buyer?.id}
+                        >
+                            <FontAwesomeIcon icon={faTrashAlt} color="white" />
+                        </button>
                     </div>
                 </div>
                 <div className="chat__header__trade-info">
@@ -89,10 +86,21 @@ function Chat({ smallScreen }: ChatProps) {
                         <span className="text-danger">-{buyer?.negativeReputation}</span>
                     </div>
                 </div>
-                <div>
-                    {smallScreen && <Link to={`${PATH_DASHBOARD}/${trade.hash}`}>
-						<FontAwesomeIcon icon={faChevronRight} color="black" />
-					</Link>}
+                <div className="chat__header__right-area">
+                    <div>
+                        <button
+                            onClick={swapUsers}
+                        >
+                            <FontAwesomeIcon icon={faSync} color="white" />
+                        </button>
+                    </div>
+                    <div>
+                        {smallScreen && <div className="chat__header__right-area_dashboard-link">
+                            <Link to={`${PATH_DASHBOARD}/${trade.hash}`}>
+							    <FontAwesomeIcon icon={faChevronRight} color="black" />
+						    </Link>
+                        </div>}
+                    </div>
                 </div>
             </div>
             <div className="chat__body">
