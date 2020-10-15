@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuth, useRate } from '@common/hooks';
 
-import { actions as tradeActions, selectors as tradeSelectors } from '@store/trades';
-import { selectors as userSelectors } from '@store/users';
+import { actions as tradeActions, selectors as tradesSelectors } from '@store/trades';
+import { selectors as usersSelectors } from '@store/users';
 
 import { RootState } from '@type/Store';
 import { Trade } from '@type/Trade';
@@ -16,17 +16,8 @@ function useDashboard() {
     const { tradeId } = useParams();
     const dispatch = useDispatch();
 
-    const trade = useSelector<RootState, Trade | null>(state => {
-        const entity = tradeSelectors.selectById(state, tradeId);
-
-        if (!entity) {
-            return null;
-        }
-
-        const buyer = userSelectors.selectById(state, entity.buyerId) as User;
-
-        return { ...entity, buyer }
-    });
+    const trade = useSelector<RootState, Trade | undefined>(state => tradesSelectors.selectById(state, tradeId));
+    const buyer = useSelector<RootState, User | undefined>(state => usersSelectors.selectById(state, trade?.buyerId || NaN));
 
     const releaseBitcoins = useCallback(() => {
         dispatch(tradeActions.updateTrade({
@@ -37,6 +28,7 @@ function useDashboard() {
 
     return {
         auth,
+        buyer,
         convert,
         trade,
         releaseBitcoins,

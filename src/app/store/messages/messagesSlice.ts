@@ -4,7 +4,7 @@ import { initApp } from '@common/actions';
 import { InitialData } from '@type/Store';
 
 const messageEntityAdapter = createEntityAdapter<Message>({
-    sortComparer: (a, b) => b.sendTime.valueOf() - a.sendTime.valueOf(),
+    sortComparer: (a, b) => b.sendTime - a.sendTime,
 });
 
 const slice = createSlice({
@@ -16,7 +16,7 @@ const slice = createSlice({
     },
     extraReducers: {
         [initApp.type]: (state, { payload }: PayloadAction<InitialData>) => {
-            messageEntityAdapter.setAll(state, payload.chats.map(chats => chats.messages).flat())
+            messageEntityAdapter.setAll(state, payload.messages)
         }
     }
 });

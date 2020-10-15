@@ -20,7 +20,13 @@ interface DashboardProps {
 }
 
 function Dashboard({ smallScreen }: DashboardProps) {
-    const { auth, convert, trade, releaseBitcoins } = useDashboard();
+    const {
+        auth,
+        buyer,
+        convert,
+        trade,
+        releaseBitcoins,
+    } = useDashboard();
 
     if (auth === UserRoleEnum.Buyer) {
         return (
@@ -42,15 +48,15 @@ function Dashboard({ smallScreen }: DashboardProps) {
         <div className="dashboard">
             <div className="dashboard__top">
                 {smallScreen && <div className="dashboard__navigation-area">
-					<Link to={`${PATH_CHAT}/${trade.id}`}>
-						<FontAwesomeIcon icon={faChevronLeft} color="black" />
-					</Link>
-				</div>}
+                    <Link to={`${PATH_CHAT}/${trade.id}`}>
+                        <FontAwesomeIcon icon={faChevronLeft} color="black"/>
+                    </Link>
+                </div>}
                 <div>
-                    You are trading with <b>{trade.buyer.name}</b>
+                    You are trading with <b>{buyer?.name}</b>
                 </div>
                 <div className="dashboard__start-time">
-                    Started {trade.started.toLocaleString()}
+                    Started {new Date(trade.started).toLocaleString()}
                 </div>
                 <div className="dashboard__action-area">
                     <button
@@ -64,59 +70,59 @@ function Dashboard({ smallScreen }: DashboardProps) {
             </div>
             <table className="dashboard__bottom">
                 <tbody>
-                    <tr>
-                        <td>
-                            <Avatar url={trade.buyer.avatarUrl} />
-                            <div className="chat__header__trade-info__buyer">
-                                <span className="text-primary">+{trade.buyer.positiveReputation}</span>
-                                <span> / </span>
-                                <span className="text-danger">-{trade.buyer.negativeReputation}</span>
-                            </div>
-                        </td>
-                        <td>
-                            <div className="dashboard__bottom_label">
-                                <b># Of trades</b>
-                            </div>
-                            <div>4</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div className="dashboard__bottom_label">
-                                <b>Trade status</b>
-                            </div>
-                            <div className={classNames('dashboard__status', trade.paid
-                                ? 'dashboard__status_green'
-                                : 'dashboard__status_gray'
-                            )}>
-                                {trade.paid ? 'Paid' : 'Not paid'}
-                            </div>
-                        </td>
-                        <td>
-                            <div className="dashboard__bottom_label">
-                                <b>Trade hash</b>
-                            </div>
-                            <div className="text-secondary">
-                                {trade.hash}
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div className="dashboard__bottom_label">
-                                <b>Amount USD</b>
-                            </div>
-                            <div>{trade.amount.toFixed(2)}</div>
-                        </td>
-                        <td>
-                            <div className="dashboard__bottom_label">
-                                <b>Amount BTC</b>
-                            </div>
-                            <div className="text-secondary">
-                                {convert(trade.amount).toFixed(8)}
-                            </div>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        <Avatar url={buyer?.avatarUrl}/>
+                        <div className="chat__header__trade-info__buyer">
+                            <span className="text-primary">+{buyer?.positiveReputation}</span>
+                            <span> / </span>
+                            <span className="text-danger">-{buyer?.negativeReputation}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div className="dashboard__bottom_label">
+                            <b># Of trades</b>
+                        </div>
+                        <div>4</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div className="dashboard__bottom_label">
+                            <b>Trade status</b>
+                        </div>
+                        <div className={classNames('dashboard__status', trade.paid
+                            ? 'dashboard__status_green'
+                            : 'dashboard__status_gray'
+                        )}>
+                            {trade.paid ? 'Paid' : 'Not paid'}
+                        </div>
+                    </td>
+                    <td>
+                        <div className="dashboard__bottom_label">
+                            <b>Trade hash</b>
+                        </div>
+                        <div className="text-secondary">
+                            {trade.hash}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div className="dashboard__bottom_label">
+                            <b>Amount USD</b>
+                        </div>
+                        <div>{trade.amount.toFixed(2)}</div>
+                    </td>
+                    <td>
+                        <div className="dashboard__bottom_label">
+                            <b>Amount BTC</b>
+                        </div>
+                        <div className="text-secondary">
+                            {convert(trade.amount).toFixed(8)}
+                        </div>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>

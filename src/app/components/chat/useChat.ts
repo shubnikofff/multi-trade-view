@@ -3,13 +3,11 @@ import { useCallback, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useAuth } from '@common/hooks';
 
-import { selectors as chatsSelectors, actions as chatActions } from '@store/chats';
 import { selectors as tradesSelectors, actions as tradeActions } from '@store/trades';
-import { selectors as userSelectors } from '@store/users';
+import { selectors as usersSelectors } from '@store/users';
 
-import { Chat } from '@type/Chat';
 import { RootState } from '@type/Store';
-import { Trade, TradeEntity } from '@type/Trade';
+import { Trade } from '@type/Trade';
 import { User } from '@type/User';
 
 import { PATH_ROOT } from '@app/paths';
@@ -20,64 +18,46 @@ function useChat() {
     const { auth } = useAuth();
     const { tradeId } = useParams();
 
-    const { chat, trade, tradeEntity } = useSelector<RootState, { trade?: Trade, chat?: Chat, tradeEntity?: TradeEntity }>(
-        state => {
-            const tradeEntity = tradesSelectors.selectById(state, tradeId);
+    const trade = useSelector<RootState, Trade | undefined>(state => tradesSelectors.selectById(state, tradeId));
+    const buyer = useSelector<RootState, User | undefined>(state => usersSelectors.selectById(state, trade?.buyerId || NaN));
 
-            if (!tradeEntity) {
-                return {};
-            }
-
-            const buyer = userSelectors.selectById(state, tradeEntity.buyerId) as User;
-            const chat = chatsSelectors.selectById(state, tradeEntity.chatId);
-            const trade = { ...tradeEntity, buyer }
-
-            return {
-                chat,
-                trade,
-                tradeEntity,
-            }
-        }
-    );
-
-    useEffect(() => {
-        if (chat?.hasUnreadMessages) {
-            dispatch(chatActions.updateChat({
-                id: chat.id,
-                changes: { hasUnreadMessages: false }
-            }));
-        }
-    }, [chat, dispatch]);
-
+    // useEffect(() => {
+    //     if (chat?.hasUnreadMessages) {
+    //         dispatch(chatActions.updateChat({
+    //             id: chat.id,
+    //             changes: { hasUnreadMessages: false }
+    //         }));
+    //     }
+    // }, [chat, dispatch]);
+    //
     const sendMessage = useCallback((text: string) => {
-        if (chat) {
-            // dispatch(chatActions.updateChat({
-            //     id: chat.id,
-            //     changes: {
-            //         messages: [
-            //             ...chat.messages,
-            //             {
-            //                 sender: auth,
-            //                 sendTime: new Date(),
-            //                 text,
-            //             }
-            //         ],
-            //     },
-            // }));
-        }
-    }, [dispatch, chat, auth]);
-
+        // if (chat) {
+        //     dispatch(chatActions.updateChat({
+        //         id: chat.id,
+        //         changes: {
+        //             messages: [
+        //                 ...chat.messages,
+        //                 {
+        //                     sender: auth,
+        //                     sendTime: new Date(),
+        //                     text,
+        //                 }
+        //             ],
+        //         },
+        //     }));
+        // }
+    }, []);
+    //
     const removeTrade = useCallback(() => {
-        if (tradeEntity) {
-            dispatch(tradeActions.removeTrade(tradeEntity.id));
-            dispatch(chatActions.removeChat(tradeEntity.chatId));
+        if (trade) {
+            dispatch(tradeActions.removeTrade(trade.id));
             history.push(PATH_ROOT);
         }
-    }, [dispatch, tradeEntity, history]);
-
+    }, [dispatch, trade, history]);
+    //
     return {
         auth,
-        chat,
+        buyer,
         removeTrade,
         sendMessage,
         trade,

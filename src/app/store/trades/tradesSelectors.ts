@@ -1,9 +1,9 @@
 import { createEntityAdapter } from '@reduxjs/toolkit';
 
 import { RootState } from '@type/Store';
-import { TradeEntity } from '@type/Trade';
+import { Trade } from '@type/Trade';
 
-const tradeAdapter = createEntityAdapter<TradeEntity>();
+const tradeAdapter = createEntityAdapter<Trade>();
 
 const selectRate = (state: RootState) => state.trades.rate;
 

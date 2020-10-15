@@ -1,10 +1,7 @@
-import { UserRoleEnum } from '@type/User';
-
 export type Message = {
     id: number;
-    sender: UserRoleEnum;
     senderId: number;
-    sendTime: Date;
+    sendTime: number;
     text: string;
 }
 

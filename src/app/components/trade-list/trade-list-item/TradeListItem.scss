@@ -1,0 +1,65 @@
+@import "../../../variables";
+
+.trade-list-item {
+  padding: $gutter;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  justify-content: space-between;
+
+  &__left-side {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    &__buyer {
+      color: $color-text-gray;
+      font-size: 0.8*$font-size;
+      margin-bottom: 0.5*$gutter;
+    }
+
+    &__amount {
+      font-size: 0.9*$font-size;
+    }
+  }
+
+  &__right-side {
+    display: flex;
+    flex-direction: column;
+    width: 5.5rem;
+    align-items: center;
+  }
+
+  &__status {
+    margin-top: 0.5*$gutter;
+    font-size: 0.8*$font-size;
+    text-transform: uppercase;
+
+    &_green {
+      color: $color-text-green;
+    }
+
+    &_gray {
+      color: $color-text-gray;
+    }
+  }
+
+  &__active {
+    background-color: $color-bg-gray;
+  }
+}
+
+.dot {
+  display: inline-block;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  margin: 0 0.5*$gutter;
+
+  &_gray {
+    background-color: $color-text-gray;
+  }
+
+  &_green {
+    background-color: $color-text-green;
+  }
+}

@@ -1,8 +1,8 @@
 import faker from 'faker';
 
-import { TradeEntity } from '@type/Trade';
-import { User, UserRoleEnum } from '@type/User';
-import { ChatInitialData } from '@type/Store';
+import { Trade } from '@type/Trade';
+import { User } from '@type/User';
+import { Message } from "@type/Chat";
 
 const USERS_NUMBER = 5;
 const TRADES_NUMBER = 10;
@@ -19,38 +19,41 @@ const userIds = users.map(user => user.id);
 const currentUserId = faker.random.arrayElement(userIds);
 const buyerIds = userIds.filter(id => id !== currentUserId);
 
-const trades: TradeEntity[] = Array.from({ length: TRADES_NUMBER }, (_, index: number) => ({
-    id: index + 1,
-    chatId: index + 1,
-    paymentMethod: faker.random.arrayElement(['Amazon Gift Card', 'iTunes Gift Card', 'PayPal']),
-    paid: faker.random.boolean(),
-    buyerId: faker.random.arrayElement(buyerIds),
-    amount: faker.random.number({ min: 10, max: 300 }),
-    hash: faker.random.alphaNumeric(8),
-    started: faker.date.recent(7),
-}));
+const messages: Message[] = [];
 
-const chats: ChatInitialData[] = Array.from({ length: TRADES_NUMBER }, (_, chatIndex: number) => ({
-    id: chatIndex + 1,
-    hasUnreadMessages: faker.random.boolean(),
-    messages: Array.from({ length: faker.random.number({ min: 1, max: MESSAGES_MAX_NUMBER }) }, (_, messageIndex) => ({
-        id: chatIndex * MESSAGES_MAX_NUMBER + messageIndex + 1,
-        sender: faker.random.arrayElement([UserRoleEnum.Seller, UserRoleEnum.Buyer]),
-        senderId: faker.random.arrayElement([currentUserId, faker.random.arrayElement(buyerIds)]),
-        sendTime: faker.date.between(trades[chatIndex].started, new Date()),
+const trades: Trade[] = Array.from({ length: TRADES_NUMBER }, (_, index: number) => {
+    const buyerId = faker.random.arrayElement(buyerIds);
+    const sellerId = currentUserId;
+    const startedDate = faker.date.recent(7);
+
+    const tradeMessages: Message[] = Array.from({ length: faker.random.number({ min: 1, max: MESSAGES_MAX_NUMBER }) }, (_, messageIndex) => ({
+        id: index * MESSAGES_MAX_NUMBER + messageIndex + 1,
+        senderId: faker.random.arrayElement([sellerId, buyerId]),
+        sendTime: faker.date.between(startedDate, new Date()).getTime(),
         text: faker.lorem.text(),
-    })),
-}));
+    }));
 
-const sellerAvatarUrl = 'https://s3.amazonaws.com/uifaces/faces/twitter/ssbb_me/128.jpg';
+    messages.push(...tradeMessages);
+
+    return ({
+        id: index + 1,
+        buyerId,
+        sellerId,
+        amount: faker.random.number({ min: 10, max: 300 }),
+        started: startedDate.getTime(),
+        hash: faker.random.alphaNumeric(8),
+        paid: faker.random.boolean(),
+        paymentMethod: faker.random.arrayElement(['Amazon Gift Card', 'iTunes Gift Card', 'PayPal']),
+        messageIds: tradeMessages.map(message => message.id),
+    });
+});
 
 const rate = 10000;
 
 export {
-    chats,
     currentUserId,
+    messages,
     rate,
-    sellerAvatarUrl,
     trades,
     users,
 }

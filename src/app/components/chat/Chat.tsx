@@ -36,7 +36,7 @@ function validate({ message }: FormValues) {
 function Chat({ smallScreen }: ChatProps) {
     const {
         auth,
-        chat,
+        buyer,
         removeTrade,
         sendMessage,
         trade,
@@ -83,10 +83,10 @@ function Chat({ smallScreen }: ChatProps) {
                         <b>{trade.paymentMethod}</b>
                     </div>
                     <div className="chat__header__trade-info__buyer">
-                        <span className="text-secondary">{trade.buyer.name} </span>
-                        <span className="text-primary">+{trade.buyer.positiveReputation}</span>
+                        <span className="text-secondary">{buyer?.name} </span>
+                        <span className="text-primary">+{buyer?.positiveReputation}</span>
                         <span className="text-secondary"> / </span>
-                        <span className="text-danger">-{trade.buyer.negativeReputation}</span>
+                        <span className="text-danger">-{buyer?.negativeReputation}</span>
                     </div>
                 </div>
                 <div>
@@ -96,7 +96,7 @@ function Chat({ smallScreen }: ChatProps) {
                 </div>
             </div>
             <div className="chat__body">
-                {chat && chat.messages.map((id) => (
+                {trade?.messageIds.map((id) => (
                     <Message id={id} key={id} />
                 ))}
                 <div ref={chatBodyBottom} />

@@ -2,9 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import Avatar from '@components/avatar';
 import { useMessage } from '@components/message/useMessage';
-import { sellerAvatarUrl } from '@app/initialData';
-
-import { UserRoleEnum } from '@type/User';
+import { currentUserId } from '@app/initialData';
 
 import './Message.scss';
 
@@ -13,31 +11,28 @@ type MessageProps = {
 }
 
 function Message({ id }: MessageProps) {
-    const { auth, message } = useMessage(id);
+    const { sender, message } = useMessage(id);
 
     return message ? (
         <div
             className={classNames('message', {
-                'message_reversed': message.sender !== auth,
+                'message_reversed': sender?.id !== currentUserId,
             })}
         >
             <div className="message__avatar">
-                <Avatar url={message.sender === UserRoleEnum.Seller
-                    ? sellerAvatarUrl
-                    : sellerAvatarUrl
-                } />
+                <Avatar url={sender?.avatarUrl} />
             </div>
             <div>
-                <div className={classNames('message__text', message.sender === auth
+                <div className={classNames('message__text', sender?.id === currentUserId
                     ? 'message__text_outgoing'
                     : 'message__text_incoming'
                 )}>
                     {message.text}
                 </div>
                 <div className={classNames('message__date', {
-                    'message__date_align-right': message.sender !== auth,
+                    'message__date_align-right': sender?.id !== currentUserId,
                 })}>
-                    {message.sendTime.toLocaleString()}
+                    {new Date(message.sendTime).toLocaleString()}
                 </div>
             </div>
         </div>

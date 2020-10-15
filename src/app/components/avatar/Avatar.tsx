@@ -3,7 +3,7 @@ import React from 'react';
 import './Avatar.scss';
 
 interface AvatarProps {
-    url: string;
+    url?: string;
 }
 
 function Avatar({ url }: AvatarProps) {

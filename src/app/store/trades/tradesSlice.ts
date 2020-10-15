@@ -2,12 +2,12 @@ import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolki
 
 import { initApp } from '@common/actions';
 
-import { TradeEntity } from '@type/Trade';
+import { Trade } from '@type/Trade';
 import { InitialData } from '@type/Store';
 
 import { rate as initialRate } from '@app/initialData';
 
-const tradeAdapter = createEntityAdapter<TradeEntity>();
+const tradeAdapter = createEntityAdapter<Trade>();
 
 const slice = createSlice({
     name: 'trades',

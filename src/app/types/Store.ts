@@ -1,27 +1,14 @@
 import store from '@app/store'
 
-import { TradeEntity } from '@type/Trade';
-import { User, UserRoleEnum } from '@type/User';
-
-type MessageInitialData = {
-    id: number;
-    sender: UserRoleEnum;
-    senderId: number,
-    sendTime: Date;
-    text: string;
-}
-
-export type ChatInitialData = {
-    id: number;
-    hasUnreadMessages: boolean;
-    messages: MessageInitialData[];
-}
+import { Trade } from '@type/Trade';
+import { User } from '@type/User';
+import { Message } from "@type/Chat";
 
 export type InitialData = {
-    chats: ChatInitialData[];
     currentUserId: number;
+    messages: Message[],
     rate: number;
-    trades: TradeEntity[];
+    trades: Trade[];
     users: User[];
 }
 
