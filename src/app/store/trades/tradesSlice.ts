@@ -7,7 +7,10 @@ import { InitialData } from '@type/Store';
 
 import { rate as initialRate } from '@app/initialData';
 
-const tradeAdapter = createEntityAdapter<Trade>();
+const tradeAdapter = createEntityAdapter<Trade>({
+    selectId: trade => trade.hash,
+    sortComparer: (a, b) => a.started - b.started,
+});
 
 const slice = createSlice({
     name: 'trades',

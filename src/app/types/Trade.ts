@@ -1,5 +1,4 @@
 export type Trade = {
-    id: number;
     buyerId: number;
     sellerId: number;
     amount: number;

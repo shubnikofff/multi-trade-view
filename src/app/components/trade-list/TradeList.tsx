@@ -31,8 +31,8 @@ function TradeList() {
     return (
         <div className="trade-list">
             {trades.map(trade => (
-                <Link to={`${PATH_CHAT}/${trade.id}`} key={trade.id}>
-                    <TradeListItem trade={trade} isActive={trade.id === selectedTradeId} />
+                <Link to={`${PATH_CHAT}/${trade.hash}`} key={trade.hash}>
+                    <TradeListItem trade={trade} isActive={trade.hash === selectedTradeId} />
                 </Link>
             ))}
         </div>

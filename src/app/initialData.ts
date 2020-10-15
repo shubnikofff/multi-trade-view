@@ -31,12 +31,12 @@ const trades: Trade[] = Array.from({ length: TRADES_NUMBER }, (_, index: number)
         senderId: faker.random.arrayElement([sellerId, buyerId]),
         sendTime: faker.date.between(startedDate, new Date()).getTime(),
         text: faker.lorem.text(),
-    }));
+    })).sort((a, b) => a.sendTime - b.sendTime);
 
     messages.push(...tradeMessages);
 
     return ({
-        id: index + 1,
+        // id: index + 1,
         buyerId,
         sellerId,
         amount: faker.random.number({ min: 10, max: 300 }),

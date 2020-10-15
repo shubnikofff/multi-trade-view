@@ -90,7 +90,7 @@ function Chat({ smallScreen }: ChatProps) {
                     </div>
                 </div>
                 <div>
-                    {smallScreen && <Link to={`${PATH_DASHBOARD}/${trade.id}`}>
+                    {smallScreen && <Link to={`${PATH_DASHBOARD}/${trade.hash}`}>
 						<FontAwesomeIcon icon={faChevronRight} color="black" />
 					</Link>}
                 </div>

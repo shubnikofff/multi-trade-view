@@ -48,7 +48,7 @@ function Dashboard({ smallScreen }: DashboardProps) {
         <div className="dashboard">
             <div className="dashboard__top">
                 {smallScreen && <div className="dashboard__navigation-area">
-                    <Link to={`${PATH_CHAT}/${trade.id}`}>
+                    <Link to={`${PATH_CHAT}/${trade.hash}`}>
                         <FontAwesomeIcon icon={faChevronLeft} color="black"/>
                     </Link>
                 </div>}

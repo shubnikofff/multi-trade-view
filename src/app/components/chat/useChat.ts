@@ -50,7 +50,7 @@ function useChat() {
     //
     const removeTrade = useCallback(() => {
         if (trade) {
-            dispatch(tradeActions.removeTrade(trade.id));
+            dispatch(tradeActions.removeTrade(trade.hash));
             history.push(PATH_ROOT);
         }
     }, [dispatch, trade, history]);

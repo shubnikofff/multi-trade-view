@@ -13,8 +13,6 @@ export function useTradeList() {
     const { auth } = useAuth();
     const { tradeId } = useParams();
 
-    const selectedTradeId = parseInt(tradeId);
-
     const trades = useSelector<RootState, Trade[]>(state => {
         const tradeEntities = tradesSelectors.selectAll(state);
         const userDictionary = usersSelectors.selectEntities(state);
@@ -27,7 +25,7 @@ export function useTradeList() {
 
     return {
         auth,
-        selectedTradeId,
+        selectedTradeId: tradeId,
         trades,
     };
 }
