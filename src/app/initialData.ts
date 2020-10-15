@@ -20,14 +20,16 @@ const currentUserId = faker.random.arrayElement(userIds);
 const buyerIds = userIds.filter(id => id !== currentUserId);
 
 const messages: Message[] = [];
+let messageId = 1;
 
-const trades: Trade[] = Array.from({ length: TRADES_NUMBER }, (_, index: number) => {
+const trades: Trade[] = Array.from({ length: TRADES_NUMBER }, () => {
     const buyerId = faker.random.arrayElement(buyerIds);
     const sellerId = currentUserId;
     const startedDate = faker.date.recent(7);
 
-    const tradeMessages: Message[] = Array.from({ length: faker.random.number({ min: 1, max: MESSAGES_MAX_NUMBER }) }, (_, messageIndex) => ({
-        id: index * MESSAGES_MAX_NUMBER + messageIndex + 1,
+
+    const tradeMessages: Message[] = Array.from({ length: faker.random.number({ min: 1, max: MESSAGES_MAX_NUMBER }) }, () => ({
+        id: messageId++,
         senderId: faker.random.arrayElement([sellerId, buyerId]),
         sendTime: faker.date.between(startedDate, new Date()).getTime(),
         text: faker.lorem.text(),
@@ -36,7 +38,6 @@ const trades: Trade[] = Array.from({ length: TRADES_NUMBER }, (_, index: number)
     messages.push(...tradeMessages);
 
     return ({
-        // id: index + 1,
         buyerId,
         sellerId,
         amount: faker.random.number({ min: 10, max: 300 }),
