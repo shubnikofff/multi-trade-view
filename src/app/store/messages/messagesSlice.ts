@@ -3,9 +3,7 @@ import { Message } from '@type/Chat';
 import { initApp } from '@common/actions';
 import { InitialData } from '@type/Store';
 
-const messageEntityAdapter = createEntityAdapter<Message>({
-    sortComparer: (a, b) => b.sendTime - a.sendTime,
-});
+const messageEntityAdapter = createEntityAdapter<Message>();
 
 const slice = createSlice({
     name: 'messages',
