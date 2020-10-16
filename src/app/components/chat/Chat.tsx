@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import NotAvailable from '@components/not-available';
 import Message from '@components/message';
@@ -43,21 +43,13 @@ function Chat({ smallScreen }: ChatProps) {
 
     const chatBodyBottom = useRef<HTMLDivElement>(null);
 
-    if (!trade) {
-        return (
-            <NotAvailable>
-                No such trade
-            </NotAvailable>
-        );
-    }
-
-    const handleSubmit = ({ message }: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
+    const handleSubmit = useCallback(({ message }: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
         sendMessage(message);
         chatBodyBottom?.current?.scrollIntoView({ behavior: 'smooth' });
         resetForm();
-    }
+    }, [sendMessage]);
 
-    return (
+    return trade ? (
         <div className="chat">
             <div className="chat__header">
                 <div className="chat__header__left-area">
@@ -131,6 +123,10 @@ function Chat({ smallScreen }: ChatProps) {
                 </Form>
             </Formik>
         </div>
+    ): (
+        <NotAvailable>
+            No such trade
+        </NotAvailable>
     );
 }
 
